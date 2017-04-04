@@ -1,0 +1,74 @@
+% part: partName
+% chapter: chapterName
+% 问题、意见、心得等——yourName
+% 你的问题、意见、心得等写在这里，可以分行写，别忘加上注释
+
+\documentclass[UTF8]{ctexbook}
+
+\ctexset{
+    part/number = \chinese{part}% 用于解决 part 的标号不显示问题
+}
+
+\usepackage{hyperref}% 超链接
+\hypersetup{
+    colorlinks=false,% 去掉超链接颜色
+    pdfborder=0 0 0% 取消超链接的边框
+}
+\usepackage{graphicx}% 图片管理
+\graphicspath{{images/}}% 设置图片搜索路径
+\usepackage{float,varwidth}% 浮动体
+\usepackage{booktabs}% 三线表
+\usepackage{tabularx}% 让表格自适应宽度与自动换行
+\newcolumntype{Y}{>{\centering\arraybackslash}X}% 定义自适应列的居中格式 Y, 用 X 为左对齐(自适应列)
+\usepackage{fancyhdr}% 页眉设置
+\usepackage{xcolor}% 颜色宏包
+\usepackage{listings}% 代码高亮
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstset{
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,% 代码字体大小
+    breakatwhitespace=false,% 是否只在空白字符处断行
+    breaklines=true,% 自动断行
+    captionpos=b,% 标题位置为 bottom
+    keepspaces=true,
+    numbers=left,% 行号的位置
+    numbersep=5pt,% 行号与代码的距离
+    numberstyle=\tiny\color{codegray},% 行号样式
+    stepnumber=2,% 隔行显示行号
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+% ----------------新增设置-------------
+% 标题定制
+\CTEXsetup[format={\raggedright\bfseries}]{section}% 标题居左
+\setcounter{secnumdepth}{3}% 标题深度为3，从 1.1 到 1.1.1.1
+
+
+
+\begin{document}
+
+\chapter{chapter name}
+  \label{chap:chapter_name}
+\newpage
+
+\section{section name}
+  \label{sec:section_name}
+  \subsection{subsection name}
+    \label{subsec:subsection_name}
+    \subsubsection{subsubsection name}
+      \label{subsubsec:subsubsection_name}
+
+
+      \section{ name}
+          \label{sec:section_name}
+
+
+\end{document}

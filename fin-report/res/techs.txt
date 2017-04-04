@@ -1,0 +1,29 @@
+# 项目所用到的技术
+
+## HTTP
+## Apache
+
+## MySQL
+
+## PHP, Node.js...
+
+## H5
+- 简介
+- 新特性
+
+## CSS3
+- 简介
+- 新特性
+- less
+
+## js
+- 简介
+- jquery
+
+## 前端框架
+
+
+## 前端规范
+来自 Bootstrap 规范
+html 规范
+css 规范

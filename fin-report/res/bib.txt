@@ -1,0 +1,16 @@
+# 参考文献
+
+## Note:
+英文书籍
+[5] Gill, R. Mastering English Literature [M]. London: Macmillan, 1985: 42-45.
+①作者姓名采用“姓在前名在后”原则，具体格式是： 姓，名字的首字母. 如： Malcolm Richard Cowley 应为：Cowley, M.R.，如果有两位作者，第一位作者方式不变，&之后第二位作者名字的首字母放在前面，姓放在后面，如：Frank Norris 与Irving Gordon应为：Norris, F. & I.Gordon.；
+
+## Web 存储
+[1]Pilgrim,M.HTML5: Up and Running[M].California:O’Reilly Media,2010:127-136.
+
+## H5 表单
+[1]Pilgrim,M.HTML5: Up and Running[M].California:O’Reilly Media,2010:147-161.
+
+## CSS
+[1]（美）Meyer,E.A.著.CSS 权威指南（第三版）[M].尹志忠，侯妍译.北京: 中国电力出版社，2007
+[2] 成林.CSS 3 实战[M].北京：机械工业出版社，2011

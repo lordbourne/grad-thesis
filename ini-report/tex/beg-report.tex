@@ -1,0 +1,80 @@
+% part: partName
+% chapter: chapterName
+% 问题、意见、心得等——yourName
+% 你的问题、意见、心得等写在这里，可以分行写，别忘加上注释
+
+\documentclass{beamer}
+
+\usepackage[UTF8,noindent]{ctexcap}
+\usepackage{hyperref}% 超链接
+\hypersetup{
+    colorlinks=false,% 去掉超链接颜色
+    pdfborder=0 0 0% 取消超链接的边框
+}
+\usepackage{graphicx}% 图片管理
+\graphicspath{{images/}}% 设置图片搜索路径
+\usepackage{float,varwidth}% 浮动体
+\usepackage{booktabs}% 三线表
+\usepackage{tabularx}% 让表格自适应宽度与自动换行
+\newcolumntype{Y}{>{\centering\arraybackslash}X}% 定义自适应列的居中格式 Y, 用 X 为左对齐(自适应列)
+\usepackage{fancyhdr}% 页眉设置
+\usepackage{xcolor}% 颜色宏包
+\usepackage{listings}% 代码高亮
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstset{
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,% 代码字体大小
+    breakatwhitespace=false,% 是否只在空白字符处断行
+    breaklines=true,% 自动断行
+    captionpos=b,% 标题位置为 bottom
+    keepspaces=true,
+    numbers=left,% 行号的位置
+    numbersep=5pt,% 行号与代码的距离
+    numberstyle=\tiny\color{codegray},% 行号样式
+    stepnumber=2,% 隔行显示行号
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+
+
+\begin{document}
+\title{基于微擎的微信商城H5开发}
+\author{宋云超}
+\date{\today}
+\maketitle
+\tableofcontents
+
+\section{项目背景与意义}
+  \label{sec:项目背景与意义}
+
+\section{项目内容与特色}
+  \label{sec:项目内容与特色}
+
+\section{项目方案与技术}
+  \label{sec:项目方案与技术}
+
+\section{项目进度与计划}
+    \label{sec:项目进度与计划}
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+% Todo:
+% title, author, date 的 snippet
+
+\end{document}
