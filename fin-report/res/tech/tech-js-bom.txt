@@ -1,0 +1,15 @@
+# JavaScript BOM 简介
+
+
+
+
+参考文献：
+[1]Nicholas C.Zakas.Professional JavaScript for Web Developers:John Wiley & Sons, Inc.,Indianapolis,Indian,2012:239-269 Chapter8
+3- Chapter1
+
+JavaScript 负责网页的动态交互部分，由三部分组成：
+- The Core(ECMAScript)
+- The Document Object Model(DOM)
+- The Browser Object Model(BOM)
+
+
