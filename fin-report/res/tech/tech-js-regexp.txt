@@ -1,0 +1,10 @@
+# JavaScript 正则表达式简介
+
+参考资料
+[1]Nicholas C.Zakas.Professional JavaScript for Web Developers:John Wiley & Sons, Inc.,Indianapolis,Indian,2012:551-589 Chapter15
+[1]Stoyan Stefanov.Object-Oriented JavaScript:Packt Publishing Ltd.,UK,2008:134-140
+RegExp
+
+replace 的详细用法，好像本身并没有替换，返回值才是替换的。
+
+
