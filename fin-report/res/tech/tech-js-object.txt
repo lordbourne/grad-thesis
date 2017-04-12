@@ -1,0 +1,77 @@
+# JavaScript 对象简介
+
+
+
+一些机制
+某对象的字面表示(literal notation)可以当成对象使用，如可以使用它的属性和方法，(33.66).toFixed(1)
+因为调用时会自动创建相应对象
+
+## 内置对象 Build-in Object
+
+
+### Number 对象
+构造函数 Number()
+
+#### 作为函数
+普通函数：把其他值转换成数值
+构造函数：构造 number 对象
+
+#### Number 对象属性
+
+#### Number 对象方法
+改变小数位数 toFixed(n)
+科学计数表示 toExponential()
+进制转换     toString(radix)
+
+### String 对象
+#### 属性
+有 length 属性
+可以像数组一样索引
+
+#### 方法
+对象转换成字面值 valueOf(), toString(), obj+"", String(1)
+大小写转换 toUpperCase(), toLowerCase()
+获得字符或者子串的位置 indexOf('a')
+如何判断字符串是否包含其他字符串（小心陷阱）
+获得子串 slice(), substring()
+把字符串分割成数组 split()
+把数组连接成字符串 join()
+
+#### 当成对象使用
+正如上面提到的，字面值可以直接当成对象使用：
+"cat".length, "cat"[2]
+
+#### 字面值与对象的不同点
+空字面值是 false value
+空对象是 true value
+
+### Math 对象
+没有 Math() 函数，不能用于创建对象
+
+#### 属性
+Math 对象的属性主要是一些常数，都是大写
+如：
+PI, SQRT2, E, LN2, LN10
+
+#### 方法
+随机数(0-1) random()
+取整 round(), floor(), ceil()
+最值 min(), max()
+指数运算 pow(x, y)
+
+### Date 对象
+可以获取当前日期、时间
+获取与设置 getMonth, setHours()
+字符串表示与时间戳转换 Date.parse(), new Date()
+Date.UTC(2009, 0, 3)
+
+某个日期是星期几 getDay()
+
+
+### Error 对象
+new Error()
+
+ ### 属性
+ name 构造函数(constructor)
+
+

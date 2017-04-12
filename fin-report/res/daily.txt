@@ -1,0 +1,5 @@
+Sublime 选中 HTML 首尾标签：Ctrl + Shift + '
+
+todo:
+sublime bug, 无法禁用某个插件的快捷键，把快捷键设置复制到 User 里面没有用
+
