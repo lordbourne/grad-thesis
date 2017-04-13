@@ -1,0 +1,23 @@
+# tomcat 简介
+
+
+配置文件语法错误，路径中有空格都会导致 tomcat 服务启动失败
+用于搭建 java 的服务器环境
+
+
+## 服务器软件的一般的配置
+
+
+## tomcat 有哪些配置
+### 端口
+#### 连接器(connector)的端口
+此端口用于 receive and response requests
+
+#### redirectPort
+
+### 协议
+### 
+
+## tomcat 的使用
+如何配置
+如何部署应用

@@ -1,6 +1,16 @@
 # JavaScript 对象简介
 
+公共属性 constructor
+对象的构建函数
 
+### Function 对象
+如果加 new 关键字会被当做构造函数来初始化一个对象
+构造函数 constructor 有 prototype 属性，而 prototype 也有自己的构造函数
+
+#### 属性
+length 参数个数
+constructor 构造函数
+prototype 用于给用构造函数构造的对象添加属性和方法，而且会影响到所有用该构造函数构造的对象
 
 一些机制
 某对象的字面表示(literal notation)可以当成对象使用，如可以使用它的属性和方法，(33.66).toFixed(1)
