@@ -1,0 +1,7 @@
+# Web 存储检测
+E:\Projects\127.0.0.1\Practice\HTML & CSS\HTML5 Up and Running\资料\HTML5 Up and Running—Dive into the future of web development.pdf Ch2-2.8
+
+# Web 存储
+如何查看本地存储
+如何增删本地存储
+E:\Projects\127.0.0.1\Practice\HTML & CSS\HTML5 Up and Running\资料\HTML5 Up and Running—Dive into the future of web development.pdf Ch7

@@ -1,0 +1,26 @@
+# Git 的安装与配置
+
+## 安装 Git(windows)
+
+## 配置 Git
+- 注册身份：用户名和邮箱
+- 个性化
+- 查看配置
+- 配置文件的目录与环境变量(Windows)
+
+### 注册身份：用户名和邮箱
+
+### 个性化配置举例
+- 编辑器
+- Git Bash 外观
+- 差异分析工具
+
+
+#### 编辑器：git config --global core.editor vi
+
+#### 查看配置
+查看所有配置 git config --list
+查看某个配置 git config user.name
+
+#### 如何使用帮助
+git help config

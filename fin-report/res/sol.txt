@@ -76,3 +76,8 @@ typeof localStorage.city == "undefined"
 $.ajax() 方法的 data 参数一定要有，可以为空, 如 data: {}
 请求的 Json 数据的文件名中不能有中文
 
+## jq 如何隐藏元素
+.hide() or addClass()
+区别
+
+## js 变量可以重定义吗
