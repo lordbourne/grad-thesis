@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <title>Document</title>
+  <link href="icheck/skins/minimal/_all.css" rel="stylesheet">
+</head>
+<body>
+  <input type="checkbox">fdf
+  <input type="checkbox" checked>
+  <input type="radio" name="iCheck">
+  <input type="radio" name="iCheck" checked>
+
+  <script src="icheck/jquery1.js"></script>
+  <!-- <script src="icheck/jquery.js"></script> -->
+  <script src="icheck/icheck.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('input').iCheck({
+        checkboxClass: 'icheckbox_minimal-red',
+        radioClass: 'iradio_minimal-red',
+        increaseArea: '30%' // optional
+      });
+    });
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+# 原型(Prototype)
+
+
+
+什么是原型？
+有什么用？哪里用得到？
+从哪里借鉴的
+如何使用？
+
+
+## 什么是 Prototype
+每个函数都有的一个属性(property)，初始化为空对象
+在调试工具中截图
+
+
+## 用到的场合
+Prototype 究竟有多重要？哪里用得到
+
+>shape JavaScript any way you like
+
+- 可以给內建对象(Build-in Objects)增加更多方法去完善和增强功能
+
+如给 Array 对象增加一个判断某个元素是否在某个数组中的功能 Array.prototype.inArray()
+给 String 对象增加一个反转字符串的功能 String.prototype.reverse()
+
+## 如何访问 Prototype 的属性和方法
+我们可以把一个函数的名字视为类，如：add，用该类初始化的一个对象视为实例(instance)，如：var a = new add(),
+那么可以这样访问 prototype:
+
+- add.prototype.name
+- a.constructor.prototype.name
+- a.name
+
+## prototype 也有 constructor
+
+## 对类的 prototype 的修改会影响到所有用该类创建的对象
+
+## 一个实例有没有自己的原型呢
+有，__proto__
+
+
+定义了一个函数，prototype 就创建了
+初始值是空对象(empty object)
+
+Prototype 可以添加属性(properties)和方法(methods), 甚至一个对象
+
+用构造函数创建对象时，该对象就有了 Prototype 属性，Prototype 的属性和方法的访问
+
+如果改变了一个
+
+## 自身属性与原型属性、优先级
+Own properties take precedence over prototype's properties with the same name
+一个对象的某个属性如果和它的 prototype 的属性重名，优先使用自身的属性
+
+hasOwnProperty() 方法
+
+原型链(property chain)
+
+
+##　可列举(Enumerable)的属性
+可以用 `for-in` loop 打印出来
+判断: propertyIsEnumerable()
+prototype 的属性不能列举？
+
+
+## isPrototypeOf()
+
+怎样知道某个属性是不是某个对象的 prototype
+someProperty.isPrototypeOf(SomeObject)
+
+## 
+
+todo:
+apply 方法忘了
+
+## 检查某个对象的 prototype 是否已经有了现成的方法
+经典代码
+```
+if (!String.prototype.reverse) {
+    String.prototype.reverse = function () {
+        return Array.prototype.reverse.apply(this.split('')).join('');
+    }
+}
+```
+
+
+## 总结一下场合
+改了类的 prototype, 实例会怎样()
+改了实例的 constructor
+改了
+
+## 重新学习 Some Prototype gotchas 这一节
