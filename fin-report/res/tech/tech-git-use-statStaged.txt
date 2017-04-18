@@ -1,0 +1,43 @@
+# 暂存状态(staged)与暂存区(staging area)
+
+
+TODO:
+如何撤销修改？
+
+当运行 git add . 命令后，所有文件就进入了暂存区(staging area)，处于暂存状态(staged)，此时所有的文件就会被 git 追踪(盯上了)，任何一丁点细微的修改都会被捕捉到，所以一般查看文件的改动都是在暂存状态查看的。
+
+## 你对文件做了有哪些修改？
+回顾文件修改操作的总结
+
+## git status 命令简介
+会显示哪些信息？从上次 git add 以来的所有操作，包括：
+
+哪些文件在暂存区？
+哪些不在暂存区？
+哪些文件内容被修改？
+哪些文件被删了？
+新建了哪些文件？
+
+## 进入了暂存区的文件:Changes  to be committed
+在你运行 git add . 命令后，没进行其他操作，然后运行 git status，此时就会显示 Changes to be committed，命令行中用 new file 表示, 意思是
+
+## 进入了暂存区但又修改了的文件：Changes  not staged for commit
+在你运行 git add . 命令后，进行了其他操作，然后运行 git status，此时就会显示 Changes not staged for commit，进行了哪些操作呢？
+
+- 改了某个文件的内容(modified)
+- 删除了文件(deleted)，包括(重命名，移动，删除)
+
+没有进入暂存区的文件
+
+## 
+Changes to be committed:
+new file:
+
+
+modified:
+deleted:
+
+Untracked files:
+
+## git diff
+
