@@ -1,0 +1,30 @@
+# CSS 元素的三种显示方式
+
+三种方式：block, inline, inline-block
+
+各自的特点，分别有哪些元素，哪些元素的 display 属性可以互相转化
+
+自动转化
+
+实际应用呢
+
+如何知道某个元素是什么属性
+
+
+## block
+### 特点
+可以设置 width, height，margin 和 padding 属性
+
+### 常用默认元素
+div, p, hn, ul, ol, li
+
+## inline
+### 特点
+不可以设置 width, height
+可以设置 line-height
+margin 和 padding 属性
+
+### 常用默认元素
+div, p, hn
+
+

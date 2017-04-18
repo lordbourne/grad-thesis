@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .iln-test {
+
+    }
+    .iln-test p {
+      border: 1px solid red;
+      text-align: center;
+    }
+    .iln-test p span {
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      margin: 20px 20px;
+      padding: 5px 20px;
+      border: 1px solid #000;
+    }
+
+    .ib-test {
+      max-width: 600px;
+      margin: auto;
+    }
+    .ib-test li {
+      display: inline-block;
+      /*width: 250px;*/
+      padding: 10px;
+    }
+    .ib-test li input {
+      height: 20px;
+    }
+
+    .fluid {
+      /*width: 70%;*/
+      max-width: 816px;/* 关键点 1 */
+      margin: auto;/* 关键点 2 */
+      /*text-align: center;*/
+    }
+    .fluid li {
+      display: inline-block;/* 关键点 3 */
+      width: 200px;/* 关键点 4 */
+      padding: 10px;/* 关键点 5 */
+    }
+    .fluid li input {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="iln-test">
+    <p>行内<span>元素</span><span>元素</span>测试</p>
+    <p>行内<span>元素</span><span>元素</span>测试</p>
+  </div>
+
+  <ul class="ib-test">
+    <li>请输入城市：<input type="text"></li>
+    <li>请输入县区：<input type="text"></li>
+    <li>请输入城市：<input type="text"></li>
+    <li>请输入县区：<input type="text"></li>
+    <li>请输入城市：<input type="text"></li>
+    <li>请输入县区：<input type="text"></li>
+    <li>请输入县区：<input type="text"></li>
+  </ul>
+
+  <ul class="fluid">
+    <li><input type="checkbox">每个条目字数都不同</li>
+    <li><input type="checkbox">每个字数都不同</li>
+    <li><input type="checkbox">每个条目字同</li>
+    <li><input type="checkbox">字数都不同</li>
+    <li><input type="checkbox">每个条目字数都不同</li>
+    <li><input type="checkbox">每个字数都不同</li>
+    <li><input type="checkbox">每个条目字数同</li>
+    <li><input type="checkbox">目字数都不同</li>
+    <li><input type="checkbox">每个条目字数都不同</li>
+    <li><input type="checkbox">每个都不同</li>
+    <li><input type="checkbox">每个条目字数都不同</li>
+    <li><input type="checkbox">每个条目字数都不同</li>
+    <li><input type="checkbox">每个都不同</li>
+    <li><input type="checkbox">每个条目字数都不同</li>
+    <li><input type="checkbox">每个条目字数都不同</li>
+    <li><input type="checkbox">每数都不同</li>
+    <li><input type="checkbox">每个条目字数都不同</li>
+    <li><input type="checkbox">每字数都不同</li>
+    <li><input type="checkbox">每个条目字数都不同</li>
+    <li><input type="checkbox">每个条字数都不同</li>
+    <li><input type="checkbox">每字数都不同</li>
+    <li><input type="checkbox">每个条目字数都不同</li>
+    <li><input type="checkbox">每个条目字数都不同</li>
+    <li><input type="checkbox">每个条字数都不同</li>
+    <li><input type="checkbox">每个字数都不同</li>
+    <li><input type="checkbox">每个条目字数都不同</li>
+    <li><input type="checkbox">每个字数都不同</li>
+    <li><input type="checkbox">每个条目字数都不同</li>
+    <li><input type="checkbox">每个条目字数都不同</li>
+  </ul>
+</body>
+</html>
