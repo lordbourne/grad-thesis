@@ -1,0 +1,24 @@
+# js 继承性(inheritance)
+
+
+函数有个 prototype 属性，是一个 object,
+
+用构造函数实例化的 object 就有了一个 secret link, 叫做 __proto__,
+指向该构造函数的 prototype？
+
+一个 object 可以使用原型链上的任意一个属性
+
+js 中没有类的概念，只有构造函数
+
+
+什么是继承？
+继承有什么用？
+如何继承？
+哪些属性适合在
+
+哪些属性适合做保留属性，哪些适合共享
+共享的属性放在 Prototype 中？
+
+在构造函数(constructor)中增加 prototype 属性
+
+

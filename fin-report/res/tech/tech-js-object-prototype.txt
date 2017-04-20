@@ -1,6 +1,16 @@
 # 原型(Prototype)
 
 
+定义了一个函数，它的
+
+## 如果构造函数的属性改动了，用此构造函数创建的对象的属性会不会发生变化？
+
+
+property
+prototype.property
+
+如果一个对象的 constructor 被重新赋值，它的某个原型链上的属性还能访问到吗？
+a.constructor.property 会变成其他的，但仍可以通过 a.property 访问到
 
 什么是原型？
 有什么用？哪里用得到？
@@ -10,7 +20,8 @@
 
 ## 什么是 Prototype
 每个函数都有的一个属性(property)，初始化为空对象
-在调试工具中截图
+
+函数对象有 prototype 包含一个对象，一个属性是 constructor, 值就是本身；另一个属性是 __proto__
 
 
 ## 用到的场合
