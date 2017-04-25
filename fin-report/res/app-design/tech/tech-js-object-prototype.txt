@@ -1,10 +1,42 @@
 # 原型(Prototype)
 
+## 参考资料
+[1]Stoyan Stefanov.Object-Oriented JavaScript:Packt Publishing Ltd.,UK,2008:149-166
+Prototype
 
-定义了一个函数，它的
+## 要回答的问题
+什么是原型？
+学了有什么用？哪里用得到？
+从哪里借鉴的
+如何使用
+- 如何给原型添加属性
+- 如何使用原型的属性
 
-## 如果构造函数的属性改动了，用此构造函数创建的对象的属性会不会发生变化？
+## 回顾
+任何对象都有自己的构造函数 constructor
+函数对象
+toString()
+函数对象的常用方法和属性:
+length：参数个数
+constructor: Function()
 
+## todo
+函数对象与用函数构造的对象，在 prototype 上有哪些区别
+
+## 什么是 Prototype
+prototype 是函数对象的一个属性，其值是一个对象: typeof fun.prototype 为 "object"
+每个函数都有的一个属性(property)，初始化为空对象
+
+
+## Prototype 的特点
+如果构造函数的属性改动了，用此构造函数创建的对象的属性会发生变化
+prototype 也有 constructor
+
+## 可列举(Enumerable)的属性
+什么是可列举(Enumerable)的属性？
+可以用 `for-in` loop 打印出来
+判断: propertyIsEnumerable()
+prototype 的属性不能列举？
 
 property
 prototype.property
@@ -12,16 +44,9 @@ prototype.property
 如果一个对象的 constructor 被重新赋值，它的某个原型链上的属性还能访问到吗？
 a.constructor.property 会变成其他的，但仍可以通过 a.property 访问到
 
-什么是原型？
-有什么用？哪里用得到？
-从哪里借鉴的
-如何使用？
-
-
-## 什么是 Prototype
-每个函数都有的一个属性(property)，初始化为空对象
-
 函数对象有 prototype 包含一个对象，一个属性是 constructor, 值就是本身；另一个属性是 __proto__
+
+## __proto__
 
 
 ## 用到的场合
@@ -42,12 +67,11 @@ Prototype 究竟有多重要？哪里用得到
 - a.constructor.prototype.name
 - a.name
 
-## prototype 也有 constructor
+
 
 ## 对类的 prototype 的修改会影响到所有用该类创建的对象
 
-## 一个实例有没有自己的原型呢
-有，__proto__
+
 
 
 定义了一个函数，prototype 就创建了
@@ -66,13 +90,6 @@ Own properties take precedence over prototype's properties with the same name
 hasOwnProperty() 方法
 
 原型链(property chain)
-
-
-##　可列举(Enumerable)的属性
-可以用 `for-in` loop 打印出来
-判断: propertyIsEnumerable()
-prototype 的属性不能列举？
-
 
 ## isPrototypeOf()
 

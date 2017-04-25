@@ -1,0 +1,47 @@
+AngularJS 简介
+=========
+
+是什么
+为什么
+核心
+重要概念
+怎样使用
+
+# 重要概念
+- 指令(directive)
+- 服务(service)
+- 模块(module)
+- 路由与多重视图(route)
+- 双向数据绑定(two-way data binding)
+- 作用域(scope)
+- 依赖注入(dependency injection)
+
+## 指令
+html 的扩展与增强
+
+# 简介
+
+## 是什么？
+客户端或浏览器端的前端 MVC 框架
+
+
+HTML 模板
+组件
+服务
+模块
+
+根模块 AppModule
+
+装饰器
+
+类
+元数据(Metadata)
+
+
+## MVC
+
+
+
+## 框架与类库
+
+
