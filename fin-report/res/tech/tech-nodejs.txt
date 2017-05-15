@@ -1,0 +1,29 @@
+Nodojs
+======
+
+
+# Nodejs 是什么
+我们打开 Nodejs 的官网，中间几行句子精炼的概括了 Nodejs 的精髓，
+>Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
+
+Nodejs 是一个运行环境，可以让 javascript 运行在服务器端，采用 Chrome 的 V8 引擎解析 javascript。Nodejs 是事件驱动的，非阻塞，效率高。npm 是 Nodejs 的包管理系统，可以非常方便的进行 Nodejs 插件的安装、升级，一行命令即可搞定，如 npm install koa. 底层采用 C++ 编写。
+
+文件读写，进程管理，网络通信，2009 年面世。欣欣向荣
+
+以上是非常官方的术语，是对 Nodejs 编程特性的一些总结，这些特性体现在了编程中：
+
+官网的一句话
+打破了前后端边界
+
+# 全局变量
+global, process
+url
+
+# 模块
+核心模块 http fs path
+文件模块 
+第三方
+
+创建 ——> 导出 ——> 加载 ——> 使用
+
+https://nodejs.org/dist/latest-v6.x/docs/api/url.html 的一张图，放在 http 的讲解上
