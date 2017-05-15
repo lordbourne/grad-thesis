@@ -1,0 +1,14 @@
+E:\Projects\127.0.0.1\Practice\HTML & CSS\HTML5 Up and Running\资料\HTML5 Up and Running—Dive into the future of web development.pdf Ch1-1.2
+
+html 是什么？标记语言，由浏览器解析，用于表现内容
+h5 是什么？
+上网一查，你会发现。。。
+HTML 的新标准
+h5 的兼容性，移动端支持好
+h5 特性举例：
+新标签，语义化
+本地存储、缓存技术，速度、容量
+多媒体
+绘图，二维、三维
+
+应用表现多样化，更多的实现方法

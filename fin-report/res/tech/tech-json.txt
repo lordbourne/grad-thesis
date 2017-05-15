@@ -1,0 +1,21 @@
+json 简介
+
+参考文档：
+
+http://www.json.org
+
+# 什么是 json
+为什么要用 json? json 可以干什么？
+json 如何使用
+简洁有力
+
+db.infos.insert({ name: "a", age: 10, score: 60, gender: "男" })
+db.infos.insert({ name: "c", age: 20, score: 80, gender: "女" })
+db.infos.insert({ name: "b", age: 30, score: 70, gender: "男" })
+db.infos.insert({ name: "e", age: 17, score: 55, gender: "女" })
+db.infos.insert({ name: "f", age: 25, score: 40, gender: "男" })
+
+
+
+db.infos.find({$ne: {age: {$gte: 20}}}).pretty()
+

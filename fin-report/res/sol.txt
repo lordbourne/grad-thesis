@@ -76,7 +76,6 @@ typeof localStorage.city == "undefined"
 ## 考不考虑离线应用
 模板存储
 
-
 ## $.ajax() 获取 Json 的一个 bug
 $.ajax() 方法的 data 参数一定要有，可以为空, 如 data: {}
 请求的 Json 数据的文件名中不能有中文
