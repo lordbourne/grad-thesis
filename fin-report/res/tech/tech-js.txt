@@ -1,0 +1,27 @@
+JavaScript 简介
+====
+
+# JS 是什么
+浏览器的脚本语言，在浏览器中解析运行，浏览器自带编译与调试工具，如 Chrome 的 V8 引擎，
+JS 的组成： 
+- ECMAScript(Core)
+- DOM (Document Object)
+- BOM (Browser Object)
+
+# JS 的作用
+
+# jS 的版本
+最新版是 ES6 ，2015 年 6 月发布，因此也叫 ES2015
+目前大部分用的是 ES5
+还有 其他非标准，coffeeScript? TypeScript
+版本变化带来框架的变化，
+
+
+
+特性：
+作用域 ES
+上下文
+原型
+异步
+
+

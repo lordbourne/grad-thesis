@@ -1,7 +1,28 @@
-# Chrome 
+# Chrome 及调试工具 
 
 
-## chrome://version/
+## Chrome 是什么
+
+## Chrome 调试工具
+figtodo: chrome 调试工具截图
+
+- Elements
+- Network
+- Sources
+- Timeline
+- Profiles
+- Resources
+
+### Element
+Element 一栏是页面的 html 代码
+
+### Network
+### Sources
+### Timeline
+### Profiles
+### Resources
+
+
 
 
 
