@@ -63,9 +63,15 @@ http 模块，负责。。。
 
 事件移除
 
+## Express 框架
+链条，通过回调函数
+
 ## Promise 支持
 bluebird 模块
 
+## Generator
+来个作用场景 ？哪些场景需要 yield
+暂停
 
 
 ### 框架学习 koa
