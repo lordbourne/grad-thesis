@@ -1,14 +1,10 @@
-% part: partName
-% chapter: chapterName
-% 问题、意见、心得等——yourName
-% 你的问题、意见、心得等写在这里，可以分行写，别忘加上注释
+% 项目用到的技术与工具简介
 
 \documentclass[UTF8]{ctexbook}
 
 \ctexset{
     part/number = \chinese{part}% 用于解决 part 的标号不显示问题
 }
-
 \usepackage{hyperref}% 超链接
 \hypersetup{
     colorlinks=false,% 去掉超链接颜色
@@ -47,17 +43,44 @@
 }
 
 \begin{document}
+  \chapter{技术与工具}
+    \label{chap:技术与工具}
+    本章主要介绍了项目所用到的技术和工具，技术包括：
+    \begin{itemize}
+      \item HTTP
+      \item JSON 与 XML
+      \item Apache 服务器的配置
+      \item Nodejs 与 npm
+      \item MongoDB
+      \item H5
+      \item CSS3
+      \item Less
+      \item ES5，ES6
+      \item jquery
+      \item MVC
+      \item AngularJS
+    \end{itemize}
 
-\chapter{chapter name}
-  \label{chap:chapter_name}
-\newpage
+    工具包括：
 
-\section{section name}
-  \label{sec:section_name}
-  \subsection{subsection name}
-    \label{subsec:subsection_name}
-    \subsubsection{subsubsection name}
-      \label{subsubsec:subsubsection_name}
+    \begin{itemize}
+      \item Sublime Text3
+      \item Chrome
+      \item 微信 Web 开发者工具
+      \item Git
+    \end{itemize}
+
+    \section{HTTP}
+      \label{sec:http}
+      \subsection{原理}
+        \label{subsec:原理}
+
+
+      什么是 HTTP
+
+    \section{小结}
+      \label{sec:小结}
+
 
 
 

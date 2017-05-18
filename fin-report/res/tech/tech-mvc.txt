@@ -1,0 +1,4 @@
+MVC 是什么？ 
+C: 
+nodejs 中 C 管理：路由， 
+angular 中 C 管理：路由，

@@ -30,6 +30,8 @@ https://nodejs.org/dist/latest-v6.x/docs/api/url.html 的一张图，放在 http
 
 ## Nodejs 的基本概念
 
+
+
 ### 回调函数
 函数作为参数，
 
@@ -38,6 +40,9 @@ js 的特性，代码顺序与执行顺序，如果某一步有花时间比较�
 上代码
 
 ### 事件，事件驱动，事件循环
+什么是事件，发射是什么意思
+什么是监听器
+什么是注册
 - 什么是事件？
 
 只有鼠标，键盘吗？读文件等
@@ -63,7 +68,7 @@ http 模块，负责。。。
 
 事件移除
 
-## Express 框架
+## Express 框架，版本 4.x
 链条，通过回调函数
 
 ## Promise 支持
@@ -77,5 +82,64 @@ bluebird 模块
 ### 框架学习 koa
 中间件是什么？
 koa 的中间件是 genetor 函数
+
+
+# 用 Nodejs 构建网站
+动态网站的原理：
+http 模块，常用的属性、方法，如何使用，有时间的话了解原理
+querystring 模块的作用
+基于事件监听，主要监听哪些事件？
+express 模块
+如何创建服务器
+如何设置路由
+如何设置模板引擎
+
+
+errorHandler 方法
+## configure 方法
+新版的 Express 好像没有了 configure 方法
+
+connect 
+
+## 中间件
+## app.listen 方法
+用来监听端口
+如何使用：
+app.listen(1234)
+
+
+
+
+
+## app.set 方法
+设置如下一些参数：
+模板、模板引擎...
+
+## app.use 方法
+引入中间件，分为：
+- 控制路由，把对某个路径的请求交给哪个函数处理
+包括固定路径和高级路径匹配模式
+
+
+- 
+
+## body-parser 模块
+解析 post 数据, 如何解析，自己测试
+
+## methosOverride 模块
+
+## errorHandler
+错误控制器
+
+## express.static() 方法
+设置静态文件的目录，包括 CSS, 图片，JS 文件等
+
+## routes 目录
+作用：模板引擎 + 数据 -> 页面，页面在服务器端生成
+需要 router 方法，解析生成的文件的名字，需要填充的数据
+
+
+## 模板与继承
+
 
 
