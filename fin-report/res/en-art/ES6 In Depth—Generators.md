@@ -130,5 +130,104 @@ function* range(start, stop) {
 - 简化构建数组的函数。假设你有个函数，每次被调用时返回一个数组, 就像下面这个：
 
 ```
+// Divide the one-dimensional array 'icons'
+// into arrays of length 'rowLength'.
+function splitIntoRows(icons, rowLength) {
+  var rows = [];
+  for (var i = 0; i < icons.length; i += rowLength) {
+    rows.push(icons.slice(i, i + rowLength));
+  }
+  return rows;
+}
+```
+
+ Generators 可以让这种代码更简洁：
+
+ ```
+ function* splitIntoRows(icons, rowLength) {
+   for (var i = 0; i < icons.length; i += rowLength) {
+     yield icons.slice(i, i + rowLength);
+   }
+ }
+ ```
+
+这种方式与上面的方式的唯一不同就是，这种方法不会一次性计算所有的结果后返回一个数组，而是返回一个 iterator, 根据需要一个一个去计算。
+
+- 返回不寻常(数组)大小的结果。你不能创建一个无穷的数组。但你可以返回一个 generator 去产生一个无穷的序列，根据你的需要去产生任意多个数据。
+- 重构复杂的循环。你曾写过又庞大有丑陋的函数吗？你想不想把他分成两个简单的部分？Generators 就是为数不多的工具之一，能帮你重构代码。当你去写一个复杂的循环的时候，你可以把产生数据的部分单独用 generator 去重构。然后把你的循环改成 <kbd>for (var data of myNewGenerator(args)) </kbd>.
+- 作为处理 iterables 的工具。ES 6 没有专门提供一些库，为用来对任意可迭代数据集进行过滤、映射、或 hack，但 generators 仅用几行代码就能实现。
+
+假设你需要一个类似于 <kbd>Array.prototype.filter</kbd> 的方法，用来对一些 DOM 节点进行操作，而不是数组。很简单，就像下面这样：
 
 ```
+function* filter(test, iterable) {
+  for (var item of iterable) {
+    if (test(item))
+      yield item;
+  }
+}
+```
+
+generators 是不是很有用？当然，这是一种很简单的方法，能够实现自定义的迭代器，而迭代器是 ES6 中的新标准。
+
+但 generator 不仅仅能实现上面这些功能，而且这还不是 generator 能做的最重要的事。
+
+# generators 和异步代码
+我曾经写过这样的代码：
+```
+          };
+        })
+      });
+    });
+  });
+});
+```
+
+你曾经也可能写过类似的代码。异步 API 返回一个回调函数，这就意味着你每次都要写一个额外的匿名函数。如果你要用代码做三件事，你不是去三行代码，而是像上面那样层层缩进。
+
+下面是我写的另外一些代码：
+```
+}).on('close', function () {
+  done(undefined, undefined);
+}).on('error', function (error) {
+  done(error);
+});
+```
+
+异步 API 通常都有错误处理机制，但没有异常处理机制。不同的 API 有不同的惯例。多数情况下，错误就被忽略了。甚至成功的结束了，但还是会被忽略。
+
+这些问题就是异步编程的代价。我们不得不接受这些比同步代码难看多了的异步代码。
+
+Genertors 给我们了一些希望。[Q.sync()](https://github.com/kriskowal/q/tree/v1/examples/async-generators) 是一个例子，用 generator 和 promise 去让代码写起了更像同步的代码。
+
+```
+// Synchronous code to make some noise.
+function makeNoise() {
+  shake();
+  rattle();
+  roll();
+}
+
+// Asynchronous code to make some noise.
+// Returns a Promise object that becomes resolved
+// when we're done making noise.
+function makeNoise_async() {
+  return Q.async(function* () {
+    yield shake_async();
+    yield rattle_async();
+    yield roll_async();
+  });
+}
+```
+
+主要的不同就是异步的写法必须在每个调用异步函数的地方加上 <kbd>yield</kbd> 。
+
+所以 generators 让我们以更习惯的方式去进行异步编程。这项工作会继续进行下去，因为 ES7 正在已经在为这个努力了，灵感来自 C#.
+
+# 我什么时候可以使用 generator
+在服务器端，如果你采用了 io.js 框架，你可以使用 ES6 的 generator 。或者如果你使用 nodejs 的话，使用时在命令行加上 --harmony 选项。
+
+浏览器中，目前只有 Firefox 27+ 和 Chrome 39+ 支持 ES6 的 generator。其他版本的浏览器你可能需要 Babel 或 Traceur 把你的 ES6 代码转换成 ES5。
+
+Generators 是由 Brendan Eich 第一p次引入的；他的设计灵感来自于 Python generators , 而 Python generators 是受 Icon 启发的。标准化的道路是曲折的，语法和行为都在变化。ES6 的 generator 是由 Andy Wingo 集成到 Firefox 和 Chrome 中的，Bloomberg 赞助了他。
+

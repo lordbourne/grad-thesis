@@ -1,8 +1,0 @@
-# 最近的任务
-
-待测试
-- 学习 AngularJS
-- 测试探索日历控件
-- 测试探索 datatable
-- 学习 ThinkPHP
-- 学习 hexo

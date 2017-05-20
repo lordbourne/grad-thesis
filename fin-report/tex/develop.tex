@@ -48,47 +48,85 @@
 
   \section{总体开发流程}
     \label{sec:总体开发流程}
-    本次的项目采用 AngularJS 框架开发，AngularJS 项目一般由入口页、模板、控制器、路由控制以及静态资源几大模块构成。
-    \par
-    AngularJS 开发的应用是单页面应用，即 SPA（Single Page Applicaiton），单页应用的特点可以简单的概括为：模板 + 路由。只需一个入口 html 文件引入页面的基本结构以及所有的资源，如图 \ref{fig:index},
-    \begin{figure}[H]
-      \centering
-      \includegraphics[width=10cm]{./img/index.jpg}
-      \caption{入口页示例}
-      \label{fig:index}
-    \end{figure}
+      本次的项目采用 AngularJS 框架开发，AngularJS 项目一般由入口页、模板、控制器、路由控制以及静态资源几大模块构成。大体而流程是： 路由配置 -> 模板设计 -> 数据构造 -> 控制器配置，这些模块的编写没有严格的顺序，模块间是由关联的，因此，改动了一个模块，其他关联的而模块都要跟着改动，
 
-    其他的页面只需写入 html 片段即可, 如图 \ref{fig:tpl}
+    \subsection{项目结构}
+      \label{subsec:项目结构}
+                         aystore
+                          |
+                          |---css/ // CSS 静态资源
+                          |    |---artdetail.css
+                          |    |---artlist.css
+                          |    |---botbar.css
+                          |    ...
+                          |
+                          |---img/ // 主要是一些图标
+                          |    |---alipay.png
+                          |    |---home.jpg
+                          |    ...
+                          |
+                          |---js/ // js 静态资源
+                          |    |---artetail.js
+                          |    |---city.js
+                          |    |---index.js
+                          |    ...
+                          |
+                          |---less // less 文件，用于编译成 CSS
+                          |---node_modules // 项目用到的模块, 如 AngularJS
+                          |---res // 存放一些资料，如设计图，方案规划等，不属于项目
+                          |---tpl // 模板文件
+                          |    |---artdetail.html
+                          |    |---ayculture.html
+                          |    |---pay.html
+                          |    ...
+                          |---app.js   // 控制器入口，路由控制，控制器代码
+                          |---index.js // 视图入口，html 基本结构，静态资源的一次性引入
 
-    \begin{figure}[H]
-      \centering
-      \includegraphics[width=10cm]{./img/tpl.jpg}
-      \caption{模板页示例}
-      \label{fig:tpl}
-    \end{figure}
-
-    路由的作用是：根据 url 控制加载相应的模板，通过 Angular 的 ui-router 模块实现，如图 \ref{fig:router}
-
-    \begin{figure}[H]
-      \centering
-      \includegraphics[width=10cm]{./img/router.jpg}
-      \caption{路由示例}
-      \label{fig:router}
-    \end{figure}
-
-
-    \subsection{入口页和模板页}
-      \label{subsec:入口页和模板页}
+      CSS 文件用来控制页面的样式
       入口页负责引入页面的基本框架、静态资源以及视图入口。页面的基本框架即 html, head 和 body 标签。head 标签中配置页面的编码 charset, 移动端兼容以及 CSS 样式文件。
 
+    \subsection{路由控制}
+      \label{subsec:路由控制}
+      本项目采用了 AngularJS 的一个 ui-router 插件来配置路由。ui-router 的一个路由由一下几部分组成：
+      \begin{itemize}
+        \item 状态名
+        \item url
+        \item 模板文件（html 文件的路径或字符串）
+        \item 各个视图
+        \begin{itemize}
+          \item 某个视图
+          \item 视图的模板
+        \end{itemize}
+      \end{itemize}
+      figtodo：路由与视图的示意图
+      ui-router 的核心在于：子路由与多重视图。一个路由对应一个模板，而一个模板文件里面又有多个视图: ui-view, 每个视图又可以插入模板。子路由写法为：father.child, 子路由直接继承父路由的模板文件，然后可以修改父路由的部分视图，这就为模板的模块化提供了一种解决方案。
+      \par
+      项目的 9 个设计图中，有的页面有底部菜单，有的没有，因此就可以把有底部菜单的页面全都放在一个主路由下，项目路由的名称叫 main, 这些页面的路由只改变父路由的内容视图。其他的页面就每个单独配置路由即可。我把有底部菜单的页面全都配置成一个叫 "main" 路由的子路由，当URL跳转到这些页面时，这些页面的菜单部分不需要改动，只改动内容这个视图即可。下面来我们来分析一下有关路由配置的代码。
+      \subsubsection{父路由配置举例}
+        \label{subsubsec:父路由配置举例}
 
+        \begin{lstlisting}
+          $stateProvider
+            .state('main', {
+              url: '/main',
+              templateUrl: "tpl/main.html",
+              views: {
+                '': {
+                  templateUrl: "tpl/main.html"
+                },
+                'content@main': {
+                   templateUrl: "tpl/home.html"
+                },
+                'botmenu@main': {
+                   templateUrl: "tpl/botmenu.html"
+                },
+              }
+            })
+        \end{lstlisting}
+        上面的代码是主路由（或者叫父路由）的配置，state() 方法的第一个参数为状态名，或者叫路由名; 第二个参数是一个对象，url 字段表示 "main" 这个路由的路径，templateUrl 表示显示的页面文件，此页面文件的作用是划分视图，这里划分为两个视图，一个对应主要内容，另一个对应底部菜单
 
-
-
-
-
-
-
+      \subsubsection{子路由配置举例}
+        \label{subsubsec:子路由配置举例}
 
   \section{home 页的设计}
     \label{sec:home_页的设计}
@@ -201,6 +239,7 @@
 
       \subsubsection{dom 结构与 CSS 样式设计}
         \label{subsubsec:dom_结构与_css_样式设计}
+
 
 
       \subsubsection{控制器，路由}
