@@ -191,7 +191,7 @@
 
         \subsection{ES 5 和 ES 6}
           \label{subsubsec:es_5_和_es_6}
-            \ref{subsubsec:javascript} 一节简要介绍了 JavaScript，我们知道 ECMAScript 是 JavaScript 的标准版本，简称 ES，目前的最新版是 ES6, 2015 年推出，也称 ES2015,但还未大量应用，目前的大部分框架仍是采用上个 ES 版本——ES5。ES 6 相比于 ES5添加了很多特性，比如支持显式地构造类，多了 class 关键词；有了局部作用域与 let 关键字；增加了遍历数组值的语法：of 关键字；增加了强大的 Generator 函数，让异步代码的书写更加容易，也可以用于构造"无限"数列, 这里的无限并不是一次性产生整个数列，而是可以放在循环中，按需要产生。
+            \ref{subsubsec:javascript} 一节简要介绍了 JavaScript，我们知道 ECMAScript 是 JavaScript 的标准版本，简称 ES，目前的最新版是 ES6, 2015 年推出，也称 ES2015,但还未大量应用，目前的大部分框架仍是采用上个 ES 版本——ES5。ES 6 相比于 ES5添加了很多特性，比如支持显式地构造类，多了 class 关键词；有了块级作用域与 let 关键字；增加了遍历数组值的语法：of 关键字；增加了强大的 Generator 函数，让异步代码的书写更加容易，也可以用于构造"无限"数列, 这里的无限并不是一次性产生整个数列，而是可以放在循环中，按需要产生。
             \par
             新标准的诞生意味着框架的大规模更新，前端框架如 Angular2 ,基于 Nodejs 的后端框架如 KOA（Express 的下一代）。前端领域发展迅速，我们要顺应时代潮流，不断学习新技术。
 
@@ -221,17 +221,14 @@
 
         \subsection{jQuery}
           \label{subsec:jquery}
-            jQuery
-
+            jQuery 是目前最流行的 JavaScript 库，2006 年 1 月 14 日诞生，作者为 John Resig。这是一个轻量的库，但功能强大。jQuery 有很多优秀的特性，几乎是前端开发必备的 JavaScript 库。我喜欢 jQuery 最主要的原因是它代码简洁，强大的 DOM 操作，还支持连缀、隐式遍历等功能。他的可以让我专注于功能，加快开发速度。我的项目的上个版本没有采用框架，全部都是用 jQuery 写的，但由于项目功能复杂，开发到最后实在难以维护，于是又换成了 AngularJS 框架，但有些地方仍在采用 jQuery ，因为 jQuery 的 DOM 操作是其他框架无法比拟的。
 
         \subsection{AngularJS}
           \label{subsec:angularjs}
-            \subsubsection{MVC}
-              \label{subsubsec:mvc}
-
+            AngularJS 是一款强大的前端框架，诞生于 2009 年，作者是 Misko Hevery 。AngularJS采用纯 JavaScript 开发，没有依赖其他的库。AngularJS 适用于构建单页应用(SPA, Single Page Application)，同时也是一款 MVC 框架，MVC 在前面介绍过，见 \ref{subsec:前端库与框架}  即视图与逻辑分离的框架。AngularJS 也有自己的一些全新的概念，例如服务(Services)，依赖注入(), 指令(directives)，脏检查……。AngularJS 是一个功能很强大的框架，给构建应用提供了大量的解决方案，因此适合构建大型的应用，不过我的项目比较小，只用到了很少的一些 AngularJS 的知识，我下面就来简要介绍一下。
             \subsubsection{SPA}
               \label{subsubsec:spa}
-                AngularJS 开发的应用是单页面应用，即 SPA（Single Page Applicaiton），单页应用的特点可以简单的概括为：模板 + 路由。只需一个入口 html 文件引入页面的基本结构以及所有的资源，如图 \ref{fig:index},
+                AngularJS 适用于开发单页面应用，即 SPA（Single Page Applicaiton），单页应用的特点可以简单的概括为：模板 + 路由。只需一个入口 html 文件引入页面的基本结构以及所有的资源，如图 \ref{fig:index},
                 \begin{figure}[H]
                   \centering
                   \includegraphics[width=10cm]{./img/index.jpg}
@@ -257,15 +254,34 @@
                   \label{fig:router}
                 \end{figure}
 
-            \subsubsection{Angular 简介}
-              \label{subsubsec:angular_简介}
+            \subsubsection{依赖注入}
+              \label{subsubsec:依赖注入}
+                调用控制器时，传入的第二个参数是一个回调函数，这个回调函数中可以根据需要加载相应的服务，不需要按照顺序，AngularJS 会根据参数名自动确定参数，这样就只需一个函数，不需要管他的参数，是一种神奇的机制。
 
             \subsubsection{ui-router 模块}
               \label{subsubsec:ui_router_模块}
+                本项目采用了 AngularJS 的一个 ui-router 插件来配置路由。ui-router 的一个路由由一下几部分组成：
+                \begin{itemize}
+                  \item 状态名
+                  \item url
+                  \item 模板文件（html 文件的路径或字符串）
+                  \item 各个视图
+                  \begin{itemize}
+                    \item 某个视图
+                    \item 视图的模板
+                  \end{itemize}
+                \end{itemize}
+                figtodo：路由与视图的示意图
+                ui-router 的核心在于：子路由与多重视图。一个路由对应一个模板，而一个模板文件里面又有多个视图: ui-view, 每个视图又可以插入模板。子路由写法为：father.child, 子路由直接继承父路由的模板文件，然后可以修改父路由的部分视图，这就为模板的模块化提供了一种解决方案。
+                \par
+                项目的 9 个设计图中，有的页面有底部菜单，有的没有，因此就可以把有底部菜单的页面全都放在一个主路由下，项目路由的名称叫 main, 这些页面的路由只改变父路由的内容视图。其他的页面就每个单独配置路由即可。我把有底部菜单的页面全都配置成一个叫 "main" 路由的子路由，当URL跳转到这些页面时，这些页面的菜单部分不需要改动，只改动内容这个视图即可。
 
-
-
-
+            \subsubsection{服务}
+              \label{subsubsec:服务}
+                AngularJS 的控制器有个特性，只会在需要的时候被实例化，而不需要时就会被销毁，每次切换路由或重新加载视图时，当前的控制器都会被 AngularJS 清除掉。而服务(Services)提供了一种在应用的整个生命周期保持数据的方法，能够在进程间通信。
+                \par
+                AngularJS 的服务分为两种，一种是内置服务，另一种是自定义服务。AngularJS 提供了一些内置服务，提供了一些常用的方法，例如
+                \$timeout, \$http, \$factory等，我的项目中采用了 \$timeout 用于延时，这是为了解决 JS 异步加载的一个 bug，困扰了我好长时间；\$http 用于处理 http 请求，我的项目中需要向服务器请求商城列表、文章列表等，就会用到这个服务；\$factory 服务用来自定义服务，我的项目中自定了一个叫 DayAndTimeTest 的服务，用于根据艾灸服务的不同时段自动确定价格。
 
     \section{工具}
       \label{sec:工具}

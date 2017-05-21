@@ -5,7 +5,6 @@
 慕课网：前端缓存那些事
 
 
-
 什么是缓存？
 为什么需要缓存？
 当前技术的现状？
@@ -13,3 +12,20 @@
 有哪些注意的问题？
 
 Cache-Control 字段：
+no-store 不缓存
+no-cache 缓存，随服务器更新而更新
+
+更新的判断，基于 MD5, 四个参数：
+Last-Modified
+If-Modified-Since
+If-None-Match
+ETag
+
+什么是 CHP 值
+
+什么是常 Cache
+
+# 建议
+js, css, img, font 尽量不用 no-cache ？Why 
+
+
