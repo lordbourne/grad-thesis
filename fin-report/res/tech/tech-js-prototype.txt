@@ -118,3 +118,81 @@ if (!String.prototype.reverse) {
 改了
 
 ## 重新学习 Some Prototype gotchas 这一节
+
+
+
+js 深入理解
+语法糖(Syntactic sugar)
+call, apply, bind
+构造函数有哪些方法
+null, undefined
+__proto__ 是什么
+
+挂载
+
+prototype 是个什么 
+不用 new 会怎样
+this 指的谁
+isPrototypeOf()
+hasOwnProperty()
+propertyIsEnumerable()
+
+built-in 对象的 enhancement
+
+prototype 是谁的属性
+给 prototype 添加属性
+
+
+# 一切皆数据, 数据皆对象
+- 提示：共同点与相同点
+
+## 一切皆数据
+### 相同点
+这里的数据是什么意思--变量
+变量有什么特点？
+- 定义的形式上: var a = b; 
+- 用法上：可以运算，删除等, 可以赋值， 当成函数参数， 可以被返回，有全局与局部之分（函数中定义函数），可以被返回, 可以作为对象的属性的值
+
+### 不同点
+名字是引用 reference，加括号是调用 invoke
+函数是数据，但是包含 代码，可以被调用 invoke
+类型 typeof 是 "function"
+
+
+### 其他
+匿名函数机制
+回调函数：被当成参数去传入另一个函数
+#### 自动调用
+好处：不用创建(全局)变量，只执行一次，只完成一个任务
+
+函数的作用域是在定义(defined)时确定的，而不是在执行时(executed)，定义在哪，他就可以访问他所在域的变量和父域的变量
+
+私有（private）函数: 函数中定义函数并使用
+特点：
+不是全局的，外部不能使用，
+好处与应用：
+减少全局变量，全局空间更干净，减少冲突
+
+
+函数中返回函数 使用 ： a()(), 改变作用域
+
+
+
+
+
+
+## 数据皆对象
+### 相同点
+对象是什么意思：键值对的组合 
+
+数组与普通的对象的qub 
+不同的对象间的方法，属性不同而已： 
+
+我是谁的实例？ b instanceof A
+constructor 是 构造函数 的原型的方法，是实例的方法
+
+
+# 域 scope 与 this
+私有域 可以访问 公有域的变量
+公有域不能直接访问私有域，如何访问
+函数中的 this 是

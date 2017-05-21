@@ -1,11 +1,23 @@
 AngularJS 简介
 =========
 
-是什么
-为什么
-核心
-重要概念
+是什么 What angular is 
+为什么 Why angular
+angular 可以用来做什么? What you can do with it
+你将学到什么？ What are you going to learn
+核心 
+重要概念 misko hevery 的主页显示了几个概念
 怎样使用
+
+复习 Angular JS 课程：
+慕课网前端沙龙，有人讲了原理
+慕课网章小云的课程
+网易云课堂
+
+# Angular 是什么
+
+# Angular 如何调试与常见错误
+
 
 # 重要概念
 - 指令(directive)
@@ -17,7 +29,9 @@ AngularJS 简介
 - 依赖注入(dependency injection)
 
 ## 指令
-html 的扩展与增强
+html 标签的扩展与增强
+扩展：在原有标签上增加属性
+增强：定义新的标签
 
 # 简介
 

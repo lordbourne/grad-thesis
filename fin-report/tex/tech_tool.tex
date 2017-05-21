@@ -50,14 +50,15 @@
         \item JSON 与 XML
         % \item Apache 服务器的配置
         % \item Nodejs 与 npm
-        \item MongoDB
+        % \item MongoDB
+        \item 前端技术
         \item H5
-        \item CSS3
-        \item Less
+        \item CSS3 与 Less
         \item ES5，ES6
-        \item jquery
-        \item MVC
-        \item AngularJS
+        \item 前端库与框架
+        \item jQuery
+        \item Bootstrap
+        \item MVC 与 AngularJS
       \end{itemize}
 
       工具包括：
@@ -74,38 +75,197 @@
 
         \subsection{HTTP}
           \label{subsec:http}
-            \subsection{原理}
-              \label{subsec:原理}
-              什么是 HTTP
+            \subsubsection{HTTP 简介}
+              \label{subsubsec:http_简介}
+                HTTP（HyperText Transport Protocol）是超文本传输协议，规定了浏览器和服务器的通信的规则。RFC 系列文档收录了互联网通信的一些规范，其中 RFC2612 记录了 HTTP 协议的规范。
+
+                当我们在浏览器中键入了一个网址的时候，都发生了什么？首先浏览器把网址发送到某个 DNS 服务器，DNS 服务器负责将网址解析成 ip 地址，然后浏览器再向 ip 地址对应的服务器发送请求，服务器接收到请求，返回你想要的资源，通常是网页的形式。其实从服务器那边传过来的，不只有网页，还有一些头信息，这些信息对客户是不可见的，但却十分重要，这些信息反映了用到的 http 协议及其版本、缓存相关的设置、传输的编码等、获取信息的状态及状态码等，这些信息都可以从 Chrome 的调试工具里面看到。
+
+            \subsubsection{开发者如何使用 HTTP}
+              \label{subsubsec:开发者如何使用_http}
+                理解 HTTP 协议对于网站开发者，无论是前端还是后台都十分重要。
+                \par
+                对于前端工作者，我们时常需处理与后台的数据传输问题，而与后台的交互离不开 Ajax (Asynchronous JavaScript And XML)，我们开发用到的一些框架(如 jQuery)都集成了 Ajax 请求的方法，如果我们理解了 HTTP 协议，就不会对 Ajax 请求所需要的那些参数感到陌生，我们也常常遇到请求失败等的问题，此时我们就需要在浏览器中去查看 Get 请求或 POST 的构建是否正确。
+                \par
+                对于后台开发者，理解 HTTP 请求就更重要了，因为后台要负责 GET 请求和 POST 请求的接收和处理，需要设置 cookie 、回话管理、资源的缓存、缓存的时间等等。
+                \par
+                因此，我们如果要想开发网站，就要花时间去理解 HTTP 协议，这样才能让我们走得更远。
+
+        \subsection{JSON 和 XML}
+          \label{subsec:json_和_xml}
+            \subsubsection{前后分离的开发模式}
+              \label{subsubsec:前后分离的开发模式}
+                现在的项目开发流行一种新模式，即前后端分离，这种开发方法可以降低耦合，提高开发效率，让不同的程序员更加专注自己擅长的地方，如后端工程师只需专注于数据的增删改查等数据库操作，前端只负责页面样式、动画特效等。前后端的数据采用的数据格式主要有两种：JSON 和 XML，主流都是在用 JSON，少部分仍在使用 XML，例如微信的开发。
+            \subsubsection{XML}
+              \label{subsubsec:XML}
+                XML(Extensible Markup Language) 是表示数据的一种格式，特点是采用了类似 HTML 标签的方式把数据包裹起来，不同的地方在于标签名可以自定义，这有点类似 AngularJS 的自定义命令，XML 可以表示出所有的数据结构：对象和数组，语法严格，但是用 XML 标签构造的数据携带了大量的无用的标签，是 JSON 未出来之前的很流行的一种数据传输格式。尽管 JSON 更简洁，但 XML 还未完全退出，这里之所以提到 XML 是因为微信开发仍在采用，微信的事件推送、消息机制的 POST 数据，都是 XML 格式。
+            \subsubsection{JSON}
+              \label{subsubsec:JSON}
+                JSON(JavaScript Object Notation, JavaScript 对象表示法) 是 JavaScript 语言的对象的表示方法，由 Douglas Crockford 提出的，《JavaScript: The Good Parts》的作者。JSON 数据格式十分简洁，只需 "{", "[", ",", ":" 这四中符号就可以表示出任意的结构。"{" 大括号用来表示对象的集合，是由一些键值对用逗号隔开组成的；"," 逗号用来分隔键值对；":" 冒号用来分隔键与值；"[" 中括号用来包裹对象，即一些大括号的组合。相比于 XML，用最少的额外信息表示了最多的数据，节省了带宽，数据呈现也更加友好，更加直观，现在在被大量采用。
+
+        \subsection{前端技术}
+          \label{subsec:前端技术}
+            前端的开发所用到的技术为：HTML, CSS 和 JavaScript, HTML 负责内容(Content), CSS负责表现(Presentation)，JavaScript负责行为(Behavior)，这三种技术相互配合，形成了浏览器上绚丽的网页。
+
+            \subsubsection{HTML}
+              \label{subsubsec:html}
+                HTML 是网页采用的标记语言，全称为： HyperText Markup Language, 超文本标记语言，标记语言指的是用一些符号去标记一些文字、图片路径等，写成纯文本格式的文件，然后再用某种解析器把文件渲染成华丽的页面，展现出来，超文本指的是展现的内容不仅仅是文字，还可以是图片、声音、视频等丰富的多媒体内容。
+
+            \subsubsection{CSS}
+              \label{subsubsec:css}
+                CSS 全称是 Cascade Style Sheet，即层叠样式表，用来控制页面的样式，HTML 写的页面要想华丽地展现必须靠 CSS 去控制样式，控制布局，例如浮动、大小、位置、颜色、字体等。
+
+            \subsubsection{JavaScript}
+              \label{subsubsec:javascript}
+                JavaScript 是一门编程语言，而一种语言的运行必须要有运行环境，运行环境提供了该语言的编译、调试工具以及一些常用的扩展库。JavaScript 的运行环境是浏览器和 Nodejs(服务器端的运行环境)。通常来说，前端的 JavaScript 包括了一下三部分：
+                \begin{itemize}
+                  \item ECMAScript (核心)
+                  \item DOM(Document Object Model, 文档对象模型)
+                  \item BOM(Browser Object Model，浏览器对象模型)
+                \end{itemize}
+                ECMAScript 是标准的 JavaScript 规范，因为早在 ECMAScript 之前，JavaScript 有很多版本，各个主流浏览器厂商的 JavaScript 语法都不太一样，ECMAScript 是为了规范化 JavaScript 而诞生的，目前最新版是 ES6, 2015 年推出。DOM 是文档对象模型，JavaScript 作为前端的语言，被赋予了更多的功能，DOM 让 JavaScript 有了操作 HTML 文档的能力，获用于获取元素和改变元素。BOM 给 JavaScript 赋予了操作浏览器的功能，例如历史记录、URL解析和跳转、计时器等。
+
+        \subsection{H5}
+          \label{subsec:h5}
+            H5 是现在很流行的一个词，狭义上说，H5 就是 HTML 的最新版，而从广义上说， H5 也包括了 CSS3，ES5甚至ES6 等前端开发的一系列技术的集合，H5 应用就是用这些新技术开发的应用。
+            \par
+            H5 为什么这么火？H5 新增了很多特性，让开发更加方便，同时页面的展现更加华丽。H5 主要新增了如下的特性：
+            \begin{itemize}
+              \item 更多的语义标签
+              \item 地理位置
+              \item Canvas 绘图
+              \item Web 存储
+              \item 更多的表单
+              \item ...
+            \end{itemize}
+            \subsubsection{语义标签}
+              \label{subsubsec:语义标签}
+                H5 提供了诸如 <article>, <section>, <figure>, <video> 等很多语义化的标签，这样可以减少 class 属性的叠加，也让 HTML 代码更易读。
+
+            \subsubsection{地理位置 API}
+              \label{subsubsec:地理位置_api}
+                利用地理位置 API 可以获取用户的位置信息甚至可以调用地图显示位置，一些移动端的应用就是通过这样的方法实现诸如查找附近的商家等功能。
+
+            \subsubsection{Canvas 绘图}
+              \label{subsubsec:canvas_绘图}
+                Canvas 绘图也是很强大的功能，主要用 JavaScript 绘制，呈现华丽的效果，一些统计图的 JS 库就是用 canvas 实现的，例如百度的 Echarts。
+
+            \subsubsection{Web 存储}
+              \label{subsubsec:web_存储}
+                本地存储对于 Web 应用来说非常重要，至少有如下优点：
+                \begin{itemize}
+                  \item 减少服务器压力
+                  \item 节约客户端流量
+                  \item 访问速度更快
+                \end{itemize}
+                本地存储一直追寻的目标是：容量要足够大，数据的持久化(页面刷新),不会随着每次HTTP请求发送，跨浏览器(各个浏览器通用)，不需第三方插件等，后面两个是之前的本地存储方案的问题。H5 新增的本地存储几乎解决了上面的问题，例如 localStorage 的最大容量可以达到 5MB，而且可以持久化存储，使用也十分方便。在 Chrome 的调试工具中，Application 一栏可以查看到本地存储的信息，如图 \ref{fig:cr_application}。除了 localStorage ，还有更强大的数据库存储的方式，例如 WebSQL, IndexedDB更多参见 \ref{subsubsec:web_存储} 一节。
+
+            \subsubsection{更多的表单}
+              \label{subsubsec:更多的表单}
+                H5新增了可以输入时间、日期、搜索框、数字等的表单，这些表单更加智能，例如，日期输入框：<input type="date">，输入框的右侧有一个下拉框，单击可以弹出日期选择框来选择日期。如图 \ref{fig:h5_date}
+                \begin{figure}[H]
+                  \centering
+                  \includegraphics[width=5cm]{./img/h5_date.png}
+                  \caption{H5 的日期输入表单}
+                  \label{fig:h5_date}
+                \end{figure}
+
+                这些输入框还支持占位文本，一些网站的的输入框中一般会有提示字符，如图，这是通过 input 标签的 placeholder属性设置的，如图 \ref{fig:h5_placeholder}
+                \begin{figure}[H]
+                  \centering
+                  \includegraphics[width=5cm]{./img/h5_placeholder.png}
+                  \caption{H 5 的占位文本}
+                  \label{fig:h5_placeholder}
+                \end{figure}
+                当然，H5 还有很多特性，这里不一一列举。
+
+        \subsection{CSS 3}
+          \label{subsec:css_3}
+            CSS 3 是最新的 CSS 标准，新增了丰富而强大的功能，圆角边框、颜色渐变、弹性盒子、动画等，我的项目中主要采用了圆角边框的特性。圆角边框看起来很美观，实现起来也很简单，常见于一些搜索框，如图 \ref{fig:h5_borderradius}。
+            \begin{figure}[H]
+              \centering
+              \includegraphics[width=5cm]{./img/h5_borderradius.png}
+              \caption{圆角边框特性}
+              \label{fig:h5_borderradius}
+            \end{figure}
+
+        \subsection{ES 5 和 ES 6}
+          \label{subsubsec:es_5_和_es_6}
+            \ref{subsubsec:javascript} 一节简要介绍了 JavaScript，我们知道 ECMAScript 是 JavaScript 的标准版本，简称 ES，目前的最新版是 ES6, 2015 年推出，也称 ES2015,但还未大量应用，目前的大部分框架仍是采用上个 ES 版本——ES5。ES 6 相比于 ES5添加了很多特性，比如支持显式地构造类，多了 class 关键词；有了局部作用域与 let 关键字；增加了遍历数组值的语法：of 关键字；增加了强大的 Generator 函数，让异步代码的书写更加容易，也可以用于构造"无限"数列, 这里的无限并不是一次性产生整个数列，而是可以放在循环中，按需要产生。
+            \par
+            新标准的诞生意味着框架的大规模更新，前端框架如 Angular2 ,基于 Nodejs 的后端框架如 KOA（Express 的下一代）。前端领域发展迅速，我们要顺应时代潮流，不断学习新技术。
+
+        \subsection{前端库与框架，MVC}
+          \label{subsec:前端库与框架}
+            直接用 HTML，CSS，和 JavaScript 三种技术就可以开发网页。不过，如果要开发大型的应用，会非常难维护，代码量也会很巨大，因此，随着技术的发展，前端领域诞生了大量的库和框架，让开发应用更迅速，也更易维护，且大部分都是开源免费的，可以直接上 Github 上下载源码。那么什么是库，什么是框架呢？
+            \par
+            库是一些函数的集合，前端领域也包括样式库，如 Bootstrap, 提供了封装好了的一些常用功能，例如方便地设置漂亮的样式、动画，方便地获取与设置元素等，而且在一个项目中一般可以同时使用多个库，只要命名空间不重复即可。
+            \par
+            框架的使用直接影响到整个项目的架构。一个框架规范了整个项目的布局结构，提供了更高层次的抽象，也有了更多的概念。我们如果只开发一个十分简单的应用，项目结构完全可以由 img 文件夹、css 文件夹, js 文件夹和一些 html 文件构成，这样的设计只是根据文件的类型来划分的，没有所谓的抽象与概念，而如果采用框架来开发，项目结构就要遵循框架的规范，一个项目只能引入一个框架，而且有了众多的概念，例如：模板、控制器等，而且一个框架中可以引入多个库。
+            \par
+            目前主流的框架通常是基于 MVC 的，M(Module) 指的是模型，V(View) 是视图，C(Controller) 是控制器。模型一般负责数据库操作，控制器负责指挥分配，如：路由配置，为模板填充数据等，而视图就是 html 及其样式文件。这样划分项目的有很多的好处，数据、业务逻辑与模板视图分离，让代码更以维护。以往的动态网页会把代码逻辑与视图全部都写在一起，这样整个页面非常庞大，调试代码不好找，样式也不好控制，而数据与模型分开后，开发人员就可以更加专注，样式出问题了，就只管调样式，样式中没有逻辑，也好定位，同样，逻辑出了问题，只管调逻辑，而不用在意样式。
+            \par
+            但使用框架同样也有很多弊端，框架有很强的约束性，这要求我们要严格遵守，有时一个字母的大小写弄错都会出问题。出问题了不要紧，如果能很快定位到代码也可以，就怕定位不到代码，而是定位到上万行代码的框架中，这样就造成了调试的极度困难，只能对着文档一点点找错误，找不到还得在网上查阅大量资料，有时查阅大量资料还查不到，因为自己出现的问题很小，别人还没遇到，有时查到资料，但是怎么看也看不懂，因为不理解原理，这时又得花时间去学框架的原理，有时甚至要看源代码，而源代码很多地方又使用了很多高级的 JavaScript 功能，此时又得去花大量时间学习 JavaScript, 你看，就因为一个很小的问题，而花费了如此长的时间去修复，有时还修复不了，而且与其他库共用时也会产生问题。
+            \par
+            以上的问题在我的项目开发过程中我都遇到过，有时就是简单的几行代码，一旦出错，要花好久才找到，耽误了大量的时间，因此，用好框架是需要积累经验的，积累常见的错误，不可能短时间上手的。不过，这次的项目仍采用了框架 AngularJS, 我更多的关注了框架的优点，学习框架的理念，我相信用熟框架后可以大大提升开发速度。下面来介绍下本次项目用到的库与框架。
+
+        \subsection{Bootstrap}
+          \label{subsec:Bootstrap}
+            Bootstrap 是一款非常优秀、广泛运用的一款前端库，是由 Twitter 的两位前员工 Mark Otto 和 Jacob Thornton 开发，在 2010 年 8 月面世。Bootstrap 总结了常见的样式与动画，可以快速搭建起网站，样式简洁、大气、美观，如图 \ref{fig:bootstrap}
+            \begin{figure}[H]
+              \centering
+              \includegraphics[width=10cm]{./img/bootstrap.png}
+              \caption{简洁大方的 Bootstrap}
+              \label{fig:bootstrap}
+            \end{figure}
+
+        \subsection{jQuery}
+          \label{subsec:jquery}
+            jQuery
+
 
         \subsection{AngularJS}
           \label{subsec:angularjs}
+            \subsubsection{MVC}
+              \label{subsubsec:mvc}
 
-            AngularJS 开发的应用是单页面应用，即 SPA（Single Page Applicaiton），单页应用的特点可以简单的概括为：模板 + 路由。只需一个入口 html 文件引入页面的基本结构以及所有的资源，如图 \ref{fig:index},
-            \begin{figure}[H]
-              \centering
-              \includegraphics[width=10cm]{./img/index.jpg}
-              \caption{入口页示例}
-              \label{fig:index}
-            \end{figure}
+            \subsubsection{SPA}
+              \label{subsubsec:spa}
+                AngularJS 开发的应用是单页面应用，即 SPA（Single Page Applicaiton），单页应用的特点可以简单的概括为：模板 + 路由。只需一个入口 html 文件引入页面的基本结构以及所有的资源，如图 \ref{fig:index},
+                \begin{figure}[H]
+                  \centering
+                  \includegraphics[width=10cm]{./img/index.jpg}
+                  \caption{入口页示例}
+                  \label{fig:index}
+                \end{figure}
 
-            其他的页面只需写入 html 片段即可, 如图 \ref{fig:tpl}
+                其他的页面只需写入 html 片段即可, 如图 \ref{fig:tpl}
 
-            \begin{figure}[H]
-              \centering
-              \includegraphics[width=10cm]{./img/tpl.jpg}
-              \caption{模板页示例}
-              \label{fig:tpl}
-            \end{figure}
+                \begin{figure}[H]
+                  \centering
+                  \includegraphics[width=10cm]{./img/tpl.jpg}
+                  \caption{模板页示例}
+                  \label{fig:tpl}
+                \end{figure}
 
-            路由的作用是：根据 url 控制加载相应的模板，通过 Angular 的 ui-router 模块实现，后面会具体讲解。如图 \ref{fig:router}
+                路由的作用是：根据 url 控制加载相应的模板，通过 Angular 的 ui-router 模块实现，后面会具体讲解。如图 \ref{fig:router}
 
-            \begin{figure}[H]
-              \centering
-              \includegraphics[width=10cm]{./img/router.jpg}
-              \caption{路由示例}
-              \label{fig:router}
-            \end{figure}
+                \begin{figure}[H]
+                  \centering
+                  \includegraphics[width=10cm]{./img/router.jpg}
+                  \caption{路由示例}
+                  \label{fig:router}
+                \end{figure}
+
+            \subsubsection{Angular 简介}
+              \label{subsubsec:angular_简介}
+
+            \subsubsection{ui-router 模块}
+              \label{subsubsec:ui_router_模块}
+
+
+
+
 
     \section{工具}
       \label{sec:工具}
@@ -115,7 +275,7 @@
             \paragraph{漂亮} Sublime 本身的字体就很美观，目前我换成了 Source Code Pro 字体，这是目前我认为最漂亮的字体。
             \begin{figure}[H]
               \centering
-              \includegraphics[width=8cm]{./img/sublime.jpg}
+              \includegraphics[width=10cm]{./img/sublime.jpg}
               \caption{Caption here}
               \label{fig:sublime}
             \end{figure}
@@ -131,14 +291,14 @@
             Chrome 是 Google 公司出品的浏览器，如图，
             \begin{figure}[H]
               \centering
-              \includegraphics[width=8cm]{./img/chrome.jpg}
+              \includegraphics[width=10cm]{./img/chrome.jpg}
               \caption{Chrome 浏览器}
               \label{fig:chrome}
             \end{figure}
             功能强大，界面美观，兼容性好，有着强大的调试工具。Chrome 是前端开发必备的神器。浏览器的作用是渲染 HTML 和编译 JavaScript, HTML 在不断发展，不断增加新特性，这就要求浏览器的兼容性要好，同时 JavaScript 也在快速发展，浏览器此时作为编译引擎，性能要足够出色，Chrome 采用了 V8 引擎来编译 JavaScript ，是目前最快的编译引擎。同时，除了编译还要能够调试，Chrome 的调试功能也非常强大，如图 \ref{fig:chrome_debug}, 下面，我们就来详细谈谈 Chrome 的调试功能。
             \begin{figure}[H]
               \centering
-              \includegraphics[width=10cm]{./img/chrome_debug.jpg}
+              \includegraphics[width=12cm]{./img/chrome_debug.jpg}
               \caption{Chrome 的调试工具}
               \label{fig:chrome_debug}
             \end{figure}
@@ -149,14 +309,14 @@
                 \begin{figure}[H]
                   \centering
 
-                  \includegraphics[width=3cm]{./img/cr_inspect.jpg}
+                  \includegraphics[width=2cm]{./img/cr_inspect.jpg}
                   \caption{Chrome 审查元素功能}
                   \label{fig:cr_inspect}
                 \end{figure}
                 翻译成捕捉更合适一点，因为它的功能是迅速定位元素在代码的位置，特别强大，如图 \ref{fig:cr_inspect1},
                 \begin{figure}[H]
                   \centering
-                  \includegraphics[width=8cm]{./img/cr_inspect1.jpg}
+                  \includegraphics[width=10cm]{./img/cr_inspect1.jpg}
                   \caption{Chrome 定位元素的代码}
                   \label{fig:cr_inspect1}
                 \end{figure}
@@ -164,7 +324,7 @@
                 \paragraph{title}
                 \begin{figure}[H]
                   \centering
-                  \includegraphics[width=8cm]{./img/cr_inspect.jpg}
+                  \includegraphics[width=3cm]{./img/cr_inspect.jpg}
                   \caption{Caption here}
                   \label{fig:figure1}
                 \end{figure}
@@ -185,7 +345,7 @@
                 Sources 是指加载的一些静态文件，如 html 文件，css 样式文件，图片，视频文件等，而加载的 js 文件可以进行断点调试，如图 \ref{fig:cr_sources}
                 \begin{figure}[htbp]
                   \centering
-                  \includegraphics[width=8cm]{./img/cr_sources.png}
+                  \includegraphics[width=10cm]{./img/cr_sources.png}
                   \caption{Sources}
                   \label{fig:cr_sources}
                 \end{figure}
@@ -201,7 +361,7 @@
                 Application 一栏主要与缓存有关，如图 \ref{fig:cr_application}
                 \begin{figure}[H]
                   \centering
-                  \includegraphics[width=8cm]{./img/cr_application.png}
+                  \includegraphics[width=10cm]{./img/cr_application.png}
                   \caption{application}
                   \label{fig:cr_application}
                 \end{figure}
@@ -226,7 +386,7 @@
             微信 Web 开发者工具是用来做微信开发的，实际上移动端的开发也可以用，如图 \ref{fig:wxweb}
             \begin{figure}[H]
               \centering
-              \includegraphics[width=8cm]{./img/wxweb.png}
+              \includegraphics[width=10cm]{./img/wxweb.png}
               \caption{Caption here}
               \label{fig:wxweb}
             \end{figure}
@@ -235,18 +395,6 @@
         \subsection{Git}
           \label{subsec:git}
             Git 一款强大的版本控制工具，最早是用于 Linux 开发，由 Linux 系统的开发者 linus Trovals 研发。版本控制系统的目标是控制项目的版本，它可以记录你的每一次提交，因此你可以很方便的回到历史的版本，而不用去创建大量的备份，可以创建分支，团队协作开发等。Git 相对于其他的版本控制系统，更强大的地方在于本地仓库，每台设备都有一模一样的本地版本，不用担心中央服务器突然崩溃的问题。我个人用 Git 主要是用于版本同步，我有时在公司实习写的代码要和寝室的代码同步，简单的几行命令就可实现。
-
-
-
-
-
-
-
-
-
-
-
-
 
     \section{小结}
       \label{sec:小结}
