@@ -115,6 +115,10 @@
               \label{subsubsec:css}
                 CSS 全称是 Cascade Style Sheet，即层叠样式表，用来控制页面的样式，HTML 写的页面要想华丽地展现必须靠 CSS 去控制样式，控制布局，例如浮动、大小、位置、颜色、字体等。
 
+            \subsubsection{Less}
+              \label{subsubsec:less}
+                Less 语言是 CSS 的升级版，让写的代码更易维护，用 Less 写 样式非常舒服，它支持嵌套、变量、表达式等，可以提升开发效率。但是，Less 文件不能被浏览器直接解析，需要通过 Less 预编译器编译成 CSS 文件才能在浏览器中执行。
+
             \subsubsection{JavaScript}
               \label{subsubsec:javascript}
                 JavaScript 是一门编程语言，而一种语言的运行必须要有运行环境，运行环境提供了该语言的编译、调试工具以及一些常用的扩展库。JavaScript 的运行环境是浏览器和 Nodejs(服务器端的运行环境)。通常来说，前端的 JavaScript 包括了一下三部分：
@@ -271,9 +275,13 @@
                     \item 视图的模板
                   \end{itemize}
                 \end{itemize}
-                figtodo：路由与视图的示意图
-                ui-router 的核心在于：子路由与多重视图。一个路由对应一个模板，而一个模板文件里面又有多个视图: ui-view, 每个视图又可以插入模板。子路由写法为：father.child, 子路由直接继承父路由的模板文件，然后可以修改父路由的部分视图，这就为模板的模块化提供了一种解决方案。
-                \par
+                ui-router 的核心在于：子路由与多重视图。一个路由对应一个模板，而一个模板文件里面又有多个视图: ui-view, 每个视图又可以插入模板。子路由写法为：father.child, 子路由直接继承父路由的模板文件，然后可以修改父路由的部分视图，这就为模板的模块化提供了一种解决方案, ui-router 由图 \ref{fig:ui_view} 所示。
+                \begin{figure}[H]
+                  \centering
+                  \includegraphics[width=12cm]{./img/ui_view.png}
+                  \caption{ui-router 的示意图}
+                  \label{fig:ui_view}
+                \end{figure}
                 项目的 9 个设计图中，有的页面有底部菜单，有的没有，因此就可以把有底部菜单的页面全都放在一个主路由下，项目路由的名称叫 main, 这些页面的路由只改变父路由的内容视图。其他的页面就每个单独配置路由即可。我把有底部菜单的页面全都配置成一个叫 "main" 路由的子路由，当URL跳转到这些页面时，这些页面的菜单部分不需要改动，只改动内容这个视图即可。
 
             \subsubsection{服务}
@@ -414,6 +422,8 @@
 
     \section{小结}
       \label{sec:小结}
+        本章主要介绍了我在项目开发中用到的技术和工具，以上只是列举了我自己用得到的工具，事实上，前端领域中还有大量的工具，包括很多效果库、框架、自动化工具构建、测试工具等。工欲善其事必先利其器，工具用得好可以大大提升开发速度，简化重复的劳动，我们应该积极去学习，尤其是在前端这个发展迅猛的行业。
+
 
 \end{document}
 

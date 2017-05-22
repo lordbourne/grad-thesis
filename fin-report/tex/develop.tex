@@ -48,10 +48,11 @@
 
   \section{总体开发流程}
     \label{sec:总体开发流程}
-      本次的项目采用 AngularJS 框架开发，AngularJS 项目一般由入口页、模板、控制器、路由控制以及静态资源几大模块构成。大体而流程是： 路由配置 -> 模板设计 -> 数据构造 -> 控制器配置，这些模块的编写没有严格的顺序，模块间是由关联的，因此，改动了一个模块，其他关联的而模块都要跟着改动，
+      本次的项目采用 AngularJS 框架开发，AngularJS 项目一般由入口页、模板、控制器、路由控制以及静态资源几大模块构成。大体而流程是： 路由配置 -> 模板设计 -> 数据构造 -> 控制器配置，这些模块的编写没有严格的顺序，模块间是由关联的，因此，改动了一个模块，其他关联的而模块都要跟着改动，下面就简单介绍一下各流程所做的工作。
 
     \subsection{项目结构}
       \label{subsec:项目结构}
+        整个项目的目录结构及如下：
                          aystore
                           |
                           |---css/ // CSS 静态资源
@@ -65,12 +66,6 @@
                           |    |---home.jpg
                           |    ...
                           |
-                          |---js/ // js 静态资源
-                          |    |---artetail.js
-                          |    |---city.js
-                          |    |---index.js
-                          |    ...
-                          |
                           |---less // less 文件，用于编译成 CSS
                           |---node_modules // 项目用到的模块, 如 AngularJS
                           |---res // 存放一些资料，如设计图，方案规划等，不属于项目
@@ -81,36 +76,65 @@
                           |    ...
                           |---app.js   // 控制器入口，路由控制，控制器代码
                           |---index.js // 视图入口，html 基本结构，静态资源的一次性引入
+        \par
+        css 目录是样式目录，用来控制页面的样式；img 目录放置了 html 文件中用到的所有的图标；less 目录是存放的 less 文件，要编译成 css 文件才能执行，我采用了 Sublime 的一个插件 Less2Css，使用时他会调用 lessc 引擎，在 Less 文件保存时可以自动将其编译为 css 文件到指定目录，非常高效。node_modules 文件夹存放了项目所需的库，由 npm 包管理工具下载的库或框架都放在 node_modules 文件夹下。res 文件夹存放了资料，例如项目规划、设计图等，不属于项目组成；tpl 文件夹存放了模板文件，对应于 MVC 模型中的 view, 由控制器控制路由与填充数据。入口页 index.html 负责引入页面的基本框架、静态资源以及视图入口。这是 SPA 应用的模式，详见 \ref{subsubsec:spa}。app.js 是控制逻辑的入口页，包含了路由的配置及各个模板的控制器。
 
-      CSS 文件用来控制页面的样式
-      入口页负责引入页面的基本框架、静态资源以及视图入口。页面的基本框架即 html, head 和 body 标签。head 标签中配置页面的编码 charset, 移动端兼容以及 CSS 样式文件。
-
-    下面来我们来分析一下有关路由配置的代码。
-      \subsubsection{父路由配置举例}
-        \label{subsubsec:父路由配置举例}
-
+    \subsection{路由配置}
+      \label{subsec:路由配置}
         \begin{lstlisting}
-          $stateProvider
-            .state('main', {
-              url: '/main',
-              templateUrl: "tpl/main.html",
-              views: {
-                '': {
-                  templateUrl: "tpl/main.html"
-                },
-                'content@main': {
-                   templateUrl: "tpl/home.html"
-                },
-                'botmenu@main': {
-                   templateUrl: "tpl/botmenu.html"
-                },
-              }
-            })
-        \end{lstlisting}
-        上面的代码是主路由（或者叫父路由）的配置，state() 方法的第一个参数为状态名，或者叫路由名; 第二个参数是一个对象，url 字段表示 "main" 这个路由的路径，templateUrl 表示显示的页面文件，此页面文件的作用是划分视图，这里划分为两个视图，一个对应主要内容，另一个对应底部菜单
+            $stateProvider
+              .state('main', {
+                url: '/main',
+                templateUrl: "tpl/main.html",
+                views: {
+                  '': {
+                    templateUrl: "tpl/main.html"
+                  },
+                  'content@main': {
+                     templateUrl: "tpl/home.html"
+                  },
+                  'botmenu@main': {
+                     templateUrl: "tpl/botmenu.html"
+                  },
+                }
+              })
+          \end{lstlisting}
+          上面的代码是主路由（或者叫父路由）的配置，state() 方法的第一个参数为状态名，或者叫路由名; 第二个参数是一个对象，url 字段表示 "main" 这个路由的路径，templateUrl 表示显示的页面文件，此页面文件的作用是划分视图，这里划分为两个视图，一个对应主要内容，另一个对应底部菜单
 
-      \subsubsection{子路由配置举例}
-        \label{subsubsec:子路由配置举例}
+    \subsection{模板与样式设计}
+      \label{subsec:模板与样式设计}
+        一个模板就是一个页面，只不过很简洁，只有关键的 html 代码，而没有外部文件引入、页面头的设置等，如图 \ref{fig:tpl1}, 这就是前面提到的 SPA (单页应用)的特性，详见 \ref{subsubsec:spa} 一节。
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=8cm]{./img/tpl.jpg}
+          \caption{简洁的模板页}
+          \label{fig:tpl1}
+        \end{figure}
+        模板的主要作用是展现页面，因此要和配合 CSS 的控制。SPA 应用的样式需要考虑命名空间的问题，因为所有的 CSS 文件都是一次性引入的，如图 \ref{fig:css}
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=10cm]{./img/css.png}
+          \caption{一次性引入所有的 CSS 样式}
+          \label{fig:css}
+        \end{figure}
+        我个人的处理方法是：对于每个 CSS 文件，用一个和文件名一样的容器把样式包裹起来，当然，我直接编辑的仍是 Less 文件，像这样 \ref{fig:wrapper}，而且用 ID 而不是 Class 来确保唯一性, 让每个CSS 有自己的作用域，这个灵感来自于 AngularJS 的控制器的作用域，把每个模板的数据封闭起来，很好的避免了冲突。
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=5cm]{./img/wrapper.png}
+          \caption{用 Wrapper 包裹起整个 Less 文件}
+          \label{fig:wrapper}
+        \end{figure}
+
+    \subsection{数据构造}
+      \label{subsec:数据构造}
+        数据构造是前端设计中很重要的一环，个人认为，前端的设计大体分为两大块内容，一个是样式的设计，一个是数据的设计。好的样式设计需要花很长的时间，因为应用越精美，需要调的细节就越多；而数据部分，更多地涉及逻辑，属于 JavaScript 部分，这就需要开发者有着很强的 JavaScript 语言基础，尤其是 DOM 和 BOM 对象，掌握一门语言是要花很长时间的，大量的而应用才能更深入的理解本质，例如 JavaScript 的一些核心概念：原型、继承、对象等，如果理解不够深入，编写的代码就可能冗杂、难以维护。
+
+
+    \subsection{控制器设计}
+      \label{subsec:控制器设计}
+
+      \par
+      以上的步骤没有严格而顺序，因为各部分会相互关联，例如：修改模板的 HTML 结构时，样式文件也要跟着修改很多，因此，各个过程几乎是同时进行的。接下来我就对每一页的技术与设计过程进行详细介绍。
 
   \section{home 页的设计}
     \label{sec:home_页的设计}
