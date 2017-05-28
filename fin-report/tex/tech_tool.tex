@@ -1,78 +1,35 @@
 % 项目用到的技术与工具简介
 
-\documentclass[UTF8]{ctexbook}
-%
-  \ctexset{
-      part/number = \chinese{part}% 用于解决 part 的标号不显示问题
-  }
-  \usepackage{hyperref}% 超链接
-  \hypersetup{
-      colorlinks=false,% 去掉超链接颜色
-      pdfborder=0 0 0% 取消超链接的边框
-  }
-  \usepackage{graphicx}% 图片管理
-  \graphicspath{{images/}}% 设置图片搜索路径
-  \usepackage{float,varwidth}% 浮动体
-  \usepackage{booktabs}% 三线表
-  \usepackage{tabularx}% 让表格自适应宽度与自动换行
-  \newcolumntype{Y}{>{\centering\arraybackslash}X}% 定义自适应列的居中格式 Y, 用 X 为左对齐(自适应列)
-  \usepackage{fancyhdr}% 页眉设置
-  \usepackage{xcolor}% 颜色宏包
-  \usepackage{listings}% 代码高亮
-  \definecolor{codegreen}{rgb}{0,0.6,0}
-  \definecolor{codegray}{rgb}{0.5,0.5,0.5}
-  \definecolor{codepurple}{rgb}{0.58,0,0.82}
-  \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
-  \lstset{
-      commentstyle=\color{codegreen},
-      keywordstyle=\color{magenta},
-      stringstyle=\color{codepurple},
-      basicstyle=\footnotesize,% 代码字体大小
-      breakatwhitespace=false,% 是否只在空白字符处断行
-      breaklines=true,% 自动断行
-      captionpos=b,% 标题位置为 bottom
-      keepspaces=true,
-      numbers=left,% 行号的位置
-      numbersep=5pt,% 行号与代码的距离
-      numberstyle=\tiny\color{codegray},% 行号样式
-      stepnumber=2,% 隔行显示行号
-      showspaces=false,
-      showstringspaces=false,
-      showtabs=false,
-      tabsize=2
-  }
-\begin{document}
-  \chapter{技术、框架与工具}
-    \label{chap:技术与工具}
-      本章主要介绍了项目所用到的技术和工具，技术包括：
-      \begin{itemize}
-        \item HTTP
-        \item JSON 与 XML
-        % \item Apache 服务器的配置
-        % \item Nodejs 与 npm
-        % \item MongoDB
-        \item 前端技术
-        \item H5
-        \item CSS3 与 Less
-        \item ES5，ES6
-        \item 前端库与框架
-        \item jQuery
-        \item Bootstrap
-        \item MVC 与 AngularJS
-      \end{itemize}
+\chapter{技术、框架与工具}
+  \label{chap:技术与工具}
+    本章主要介绍了项目所用到的技术和工具，技术包括：
+    \begin{itemize}
+      \item HTTP
+      \item JSON 与 XML
+      % \item Apache 服务器的配置
+      % \item Nodejs 与 npm
+      % \item MongoDB
+      \item 前端技术
+      \item H5
+      \item CSS3 与 Less
+      \item ES5，ES6
+      \item 前端库与框架
+      \item jQuery
+      \item Bootstrap
+      \item MVC 与 AngularJS
+    \end{itemize}
 
-      工具包括：
+    工具包括：
 
-      \begin{itemize}
-        \item Sublime Text3
-        \item Chrome
-        \item 微信 Web 开发者工具
-        \item Git
-      \end{itemize}
+    \begin{itemize}
+      \item Sublime Text3
+      \item Chrome
+      \item 微信 Web 开发者工具
+      \item Git
+    \end{itemize}
 
     \section{技术与框架}
       \label{sec:技术框架}
-
         \subsection{HTTP}
           \label{subsec:http}
             \subsubsection{HTTP 简介}
@@ -101,7 +58,7 @@
                 XML(Extensible Markup Language) 是表示数据的一种格式，特点是采用了类似 HTML 标签的方式把数据包裹起来，不同的地方在于标签名可以自定义，这有点类似 AngularJS 的自定义命令，XML 可以表示出所有的数据结构：对象和数组，语法严格，但是用 XML 标签构造的数据携带了大量的无用的标签，是 JSON 未出来之前的很流行的一种数据传输格式。尽管 JSON 更简洁，但 XML 还未完全退出，这里之所以提到 XML 是因为微信开发仍在采用，微信的事件推送、消息机制的 POST 数据，都是 XML 格式。
             \subsubsection{JSON}
               \label{subsubsec:JSON}
-                JSON(JavaScript Object Notation, JavaScript 对象表示法) 是 JavaScript 语言的对象的表示方法，由 Douglas Crockford 提出的，《JavaScript: The Good Parts》的作者。JSON 数据格式十分简洁，只需 "{", "[", ",", ":" 这四中符号就可以表示出任意的结构。"{" 大括号用来表示对象的集合，是由一些键值对用逗号隔开组成的；"," 逗号用来分隔键值对；":" 冒号用来分隔键与值；"[" 中括号用来包裹对象，即一些大括号的组合。相比于 XML，用最少的额外信息表示了最多的数据，节省了带宽，数据呈现也更加友好，更加直观，现在在被大量采用。
+                JSON(JavaScript Object Notation, JavaScript 对象表示法) 是 JavaScript 语言的对象的表示方法，由 Douglas Crockford 提出的，《JavaScript: The Good Parts》的作者。JSON 数据格式十分简洁，只需 "\{"、"["、","、":" 这四中符号就可以表示出任意的结构。"\{" 大括号用来表示对象的集合，是由一些键值对用逗号隔开组成的；"," 逗号用来分隔键值对；":" 冒号用来分隔键与值；"[" 中括号用来包裹对象，即一些大括号的组合。相比于 XML，用最少的额外信息表示了最多的数据，节省了带宽，数据呈现也更加友好，更加直观，现在在被大量采用。
 
         \subsection{前端技术}
           \label{subsec:前端技术}
@@ -127,6 +84,7 @@
                   \item DOM(Document Object Model, 文档对象模型)
                   \item BOM(Browser Object Model，浏览器对象模型)
                 \end{itemize}
+                \par
                 ECMAScript 是标准的 JavaScript 规范，因为早在 ECMAScript 之前，JavaScript 有很多版本，各个主流浏览器厂商的 JavaScript 语法都不太一样，ECMAScript 是为了规范化 JavaScript 而诞生的，目前最新版是 ES6, 2015 年推出。DOM 是文档对象模型，JavaScript 作为前端的语言，被赋予了更多的功能，DOM 让 JavaScript 有了操作 HTML 文档的能力，获用于获取元素和改变元素。BOM 给 JavaScript 赋予了操作浏览器的功能，例如历史记录、URL解析和跳转、计时器等。
 
         \subsection{H5}
@@ -162,6 +120,7 @@
                   \item 节约客户端流量
                   \item 访问速度更快
                 \end{itemize}
+                \par
                 本地存储一直追寻的目标是：容量要足够大，数据的持久化(页面刷新),不会随着每次HTTP请求发送，跨浏览器(各个浏览器通用)，不需第三方插件等，后面两个是之前的本地存储方案的问题。H5 新增的本地存储几乎解决了上面的问题，例如 localStorage 的最大容量可以达到 5MB，而且可以持久化存储，使用也十分方便。在 Chrome 的调试工具中，Application 一栏可以查看到本地存储的信息，如图 \ref{fig:cr_application}。除了 localStorage ，还有更强大的数据库存储的方式，例如 WebSQL, IndexedDB更多参见 \ref{subsubsec:web_存储} 一节。
 
             \subsubsection{更多的表单}
@@ -174,7 +133,7 @@
                   \label{fig:h5_date}
                 \end{figure}
 
-                这些输入框还支持占位文本，一些网站的的输入框中一般会有提示字符，如图，这是通过 input 标签的 placeholder属性设置的，如图 \ref{fig:h5_placeholder}
+                这些输入框还支持占位文本，一些网站的的输入框中一般会有提示字符，这是通过 input 标签的 placeholder属性设置的，如图 \ref{fig:h5_placeholder}
                 \begin{figure}[H]
                   \centering
                   \includegraphics[width=5cm]{./img/h5_placeholder.png}
@@ -229,7 +188,7 @@
 
         \subsection{AngularJS}
           \label{subsec:angularjs}
-            AngularJS 是一款强大的前端框架，诞生于 2009 年，作者是 Misko Hevery 。AngularJS采用纯 JavaScript 开发，没有依赖其他的库。AngularJS 适用于构建单页应用(SPA, Single Page Application)，同时也是一款 MVC 框架，MVC 在前面介绍过，见 \ref{subsec:前端库与框架}  即视图与逻辑分离的框架。AngularJS 也有自己的一些全新的概念，例如服务(Services)，依赖注入(), 指令(directives)，脏检查……。AngularJS 是一个功能很强大的框架，给构建应用提供了大量的解决方案，因此适合构建大型的应用，不过我的项目比较小，只用到了很少的一些 AngularJS 的知识，我下面就来简要介绍一下。
+            AngularJS 是一款强大的前端框架，诞生于 2009 年，作者是 Misko Hevery 。AngularJS采用纯 JavaScript 开发，没有依赖其他的库。AngularJS 适用于构建单页应用(SPA, Single Page Application)，同时也是一款 MVC 框架，MVC 在前面介绍过，见 \ref{subsec:前端库与框架}  即视图与逻辑分离的框架。AngularJS 也有自己的一些全新的概念，例如服务(Services)，依赖注入(Dependency Injection), 指令(directives)，脏检查(Dirty Checking)……。AngularJS 是一个功能很强大的框架，给构建应用提供了大量的解决方案，因此适合构建大型的应用，不过我的项目比较小，只用到了很少的一些 AngularJS 的知识，我下面就来简要介绍一下。
             \subsubsection{SPA}
               \label{subsubsec:spa}
                 AngularJS 适用于开发单页面应用，即 SPA（Single Page Applicaiton），单页应用的特点可以简单的概括为：模板 + 路由。只需一个入口 html 文件引入页面的基本结构以及所有的资源，如图 \ref{fig:index},
@@ -260,11 +219,14 @@
 
             \subsubsection{控制器与模板引擎}
               \label{subsubsec:控制器与模板引擎}
-                在没用 AngularJS 之前，如何向页面写入大量的数据对我来说是个非常棘手的问题，我之前是用的 jquery 实现的，利用了大量的 dom 操作和字符串拼接等，还利用了 h5 的 data-* 属性（防止引入过多的class或id），到最好实在难以维护，尤其是列表数据，如何让列表根据数据结构去展现是个比较麻烦的事情，如果用 jquery 实现的话，需要一个 for 循环，每个循环向模板中填充数据，填充数据的实现我也是靠 dom 操作，填充的数据包括标签的内容、标签的属性等，代码比较多，
-
-                如图：reftodo,figtodo, jQuery 填充数据的复杂性
-
-                才选择去使用一款框架的。
+                在没用 AngularJS 之前，如何向页面写入大量的数据对我来说是个非常棘手的问题，我之前是用的 jquery 实现的，利用了大量的 dom 操作和字符串拼接等，还利用了 h5 的 data-* 属性（防止引入过多的class或id），到最好实在难以维护，尤其是列表数据，如何让列表根据数据结构去展现是个比较麻烦的事情，如果用 jquery 实现的话，需要一个 for 循环，每个循环向模板中填充数据，填充数据的实现我也是靠 dom 操作，填充的数据包括标签的内容、标签的属性等，代码比较多，如图 \ref{fig:cmplx_jq_tpl}，
+                \begin{figure}[H]
+                  \centering
+                  \includegraphics[width=12cm]{./img/cmplx_jq_tpl.png}
+                  \caption{jQuery 填充模板的复杂性}
+                  \label{fig:cmplx_jq_tpl}
+                \end{figure}
+                所以才选择去使用一款框架的。
                 \par
                 AngularJS 没有让我失望，AngularJS 利用控制器去向模板中填入数据，每个控制器都有自己的域———\$scope, 只需把数据挂载到 \$scope 上，然后在模板中直接引入用双大括号括起来的变量名即可，非常方便。
                 如图：AngularJs 的模板引擎
@@ -287,10 +249,11 @@
                     \item 视图的模板
                   \end{itemize}
                 \end{itemize}
+                \par
                 ui-router 的核心在于：子路由与多重视图。一个路由对应一个模板，而一个模板文件里面又有多个视图: ui-view, 每个视图又可以插入模板。子路由写法为：father.child, 子路由直接继承父路由的模板文件，然后可以修改父路由的部分视图，这就为模板的模块化提供了一种解决方案, ui-router 由图 \ref{fig:ui_view} 所示。
                 \begin{figure}[H]
                   \centering
-                  \includegraphics[width=12cm]{./img/ui_view.png}
+                  \includegraphics[width=\textwidth]{./img/ui_view.png}
                   \caption{ui-router 的示意图}
                   \label{fig:ui_view}
                 \end{figure}
@@ -307,34 +270,35 @@
       \label{sec:工具}
         \subsection{Sublime Text 3}
           \label{subsec:sublime_text_3}
-            Sublime Text 3 是一款非常强大的编辑器，如图 \ref{fig:sublime}, 目前是我最喜欢的编辑器，有诸多的优点：
-            \paragraph{漂亮} Sublime 本身的字体就很美观，目前我换成了 Source Code Pro 字体，这是目前我认为最漂亮的字体。
+            Sublime Text 3 是一款非常强大的编辑器，如图 \ref{fig:sublime}, 目前是我最喜欢的编辑器，有诸多的优点。
+            \par
+            \textbf{漂亮}\, Sublime 本身的字体就很美观，目前我换成了 Source Code Pro 字体，这是目前我认为最漂亮的字体。
             \begin{figure}[H]
               \centering
               \includegraphics[width=10cm]{./img/sublime.jpg}
               \caption{Caption here}
               \label{fig:sublime}
             \end{figure}
+            \textbf{轻量}\, Sublime Text 3 的安装包只有 8 MB，即使在我安装了大量的插件(40 多个)后也不到 150MB，相比于 IDE 更加轻量，因此速度也是飞快。一个 IDE 至少几百兆甚至一两G, 大量的功能用不上，Sublime 的功能是根据需要来安装相应的插件，因此是按需索取，有更强的定制性。
+            \textbf{高效的操作}\, Sublime Text 官网中间就贴了一张动图，展示了 Sublime 的高效操作，如快速定位(文件、函数、某一行)、多光标编辑、快速选中单词和移动行等。
 
-            \paragraph{轻量} Sublime Text 3 的安装包只有 8 MB，即使在我安装了大量的插件(40 多个)后也不到 150MB，相比于 IDE 更加轻量，因此速度也是飞快。一个 IDE 至少几百兆甚至一两G, 大量的功能用不上，Sublime 的功能是根据需要来安装相应的插件，因此是按需索取，有更强的定制性。
-
-            \paragraph{高效的操作} Sublime Text 官网中间就贴了一张动图，展示了 Sublime 的高效操作，如快速定位(文件、函数、某一行)、多光标编辑、快速选中单词和移动行等。
-
-            \paragraph{插件系统、代码片段} Sublime 有着众多的插件，基本上可以打造任何编程语言的环境，语法高亮、实时纠错、代码片段等，让写代码快得飞起。
+            \textbf{插件系统、代码片段}\, Sublime 有着众多的插件，基本上可以打造任何编程语言的环境，语法高亮、实时纠错、代码片段等，让写代码快得飞起。
 
         \subsection{Chrome}
           \label{subsec:chrome}
-            Chrome 是 Google 公司出品的浏览器，如图，
+            Chrome 是 Google 公司出品的浏览器，如图 \ref{fig:chrome}
             \begin{figure}[H]
               \centering
               \includegraphics[width=10cm]{./img/chrome.jpg}
               \caption{Chrome 浏览器}
               \label{fig:chrome}
             \end{figure}
-            功能强大，界面美观，兼容性好，有着强大的调试工具。Chrome 是前端开发必备的神器。浏览器的作用是渲染 HTML 和编译 JavaScript, HTML 在不断发展，不断增加新特性，这就要求浏览器的兼容性要好，同时 JavaScript 也在快速发展，浏览器此时作为编译引擎，性能要足够出色，Chrome 采用了 V8 引擎来编译 JavaScript ，是目前最快的编译引擎。同时，除了编译还要能够调试，Chrome 的调试功能也非常强大，如图 \ref{fig:chrome_debug}, 下面，我们就来详细谈谈 Chrome 的调试功能。
+            功能强大，界面美观，兼容性好，有着强大的调试工具。Chrome 是前端开发必备的神器。浏览器的作用是渲染 HTML 和编译 JavaScript, HTML 在不断发展，不断增加新特性，这就要求浏览器的兼容性要好，同时 JavaScript 也在快速发展，浏览器此时作为编译引擎，性能要足够出色。
+            \par
+            Chrome 采用了 V8 引擎来编译 JavaScript ，是目前最快的编译引擎。同时，除了编译还要能够调试，Chrome 的调试功能也非常强大，如图 \ref{fig:chrome_debug}, 下面，我们就来详细谈谈 Chrome 的调试功能。
             \begin{figure}[H]
               \centering
-              \includegraphics[width=12cm]{./img/chrome_debug.jpg}
+              \includegraphics[width=\textwidth]{./img/chrome_debug.jpg}
               \caption{Chrome 的调试工具}
               \label{fig:chrome_debug}
             \end{figure}
@@ -352,15 +316,14 @@
                 翻译成捕捉更合适一点，因为它的功能是迅速定位元素在代码的位置，特别强大，如图 \ref{fig:cr_inspect1},
                 \begin{figure}[H]
                   \centering
-                  \includegraphics[width=10cm]{./img/cr_inspect1.jpg}
+                  \includegraphics[width=12cm]{./img/cr_inspect1.jpg}
                   \caption{Chrome 定位元素的代码}
                   \label{fig:cr_inspect1}
                 \end{figure}
                 当点击审查元素的菜单后，我把鼠标移动到某个输入框上，Chrome 迅速为我定位到了其所在HTML代码处，同时右边还显示了对应的 CSS 样式，很强。
-                \paragraph{title}
                 \begin{figure}[H]
                   \centering
-                  \includegraphics[width=3cm]{./img/cr_inspect.jpg}
+                  \includegraphics[width=2cm]{./img/cr_inspect.jpg}
                   \caption{Caption here}
                   \label{fig:figure1}
                 \end{figure}
@@ -381,7 +344,7 @@
                 Sources 是指加载的一些静态文件，如 html 文件，css 样式文件，图片，视频文件等，而加载的 js 文件可以进行断点调试，如图 \ref{fig:cr_sources}
                 \begin{figure}[htbp]
                   \centering
-                  \includegraphics[width=10cm]{./img/cr_sources.png}
+                  \includegraphics[width=12cm]{./img/cr_sources.png}
                   \caption{Sources}
                   \label{fig:cr_sources}
                 \end{figure}
@@ -389,15 +352,20 @@
 
             \subsubsection{Network}
               \label{subsubsec:network}
-
-
+                Network 一栏主要是显示了资源的加载状况。打开调试工具后定位到 Network 一栏，此时刷新页面，就会看到下面出现一个列表，里面显示了各个资源的加载的时间、状态、类型、名字、方法等，如图 \ref{fig:cr_network}。
+                \begin{figure}[htbp]
+                  \centering
+                  \includegraphics[width=12cm]{./img/cr_network.png}
+                  \caption{Network}
+                  \label{fig:cr_network}
+                \end{figure}
 
             \subsubsection{Application}
               \label{subsubsec:application}
                 Application 一栏主要与缓存有关，如图 \ref{fig:cr_application}
                 \begin{figure}[H]
                   \centering
-                  \includegraphics[width=10cm]{./img/cr_application.png}
+                  \includegraphics[width=12cm]{./img/cr_application.png}
                   \caption{application}
                   \label{fig:cr_application}
                 \end{figure}
@@ -409,6 +377,7 @@
                   \item WebSQL
                   \item Cookies
                 \end{itemize}
+                \par
                 除了 Cookies，其他的存储方式都是 H5 新增的存储标准，容量一般都很大，例如 Local Storage 的容量可以达到 5MB, 而 Cookies 只有 4K，很多的网站开始尝试用 Local Storage 作为本地存储，而 IndexedDB 和 WebSQL 技术属于比较新的技术，还没有大面积使用。
                 \par
                 大量使用本地存储，对于服务器来说可以减轻负担，而对于客户端来说，减少了流量使用，提高了响应速度，Local Storage 我用来进行跨页数据传输问题，这只是方案之一，local Storage 的使用很方便，主要是 localStorage 对象，设置值用 localStorege.set('key', 'value') 或者 localStorege.key = value, 获取值用 localStorege.get('key') 或者 localStorege.key，因为 localStorage 也是一个对象，因此可以通过点或者中括号的方法获取或设置相应的值。
@@ -422,7 +391,7 @@
             微信 Web 开发者工具是用来做微信开发的，实际上移动端的开发也可以用，如图 \ref{fig:wxweb}
             \begin{figure}[H]
               \centering
-              \includegraphics[width=10cm]{./img/wxweb.png}
+              \includegraphics[width=12cm]{./img/wxweb.png}
               \caption{Caption here}
               \label{fig:wxweb}
             \end{figure}
@@ -432,10 +401,6 @@
           \label{subsec:git}
             Git 一款强大的版本控制工具，最早是用于 Linux 开发，由 Linux 系统的开发者 linus Trovals 研发。版本控制系统的目标是控制项目的版本，它可以记录你的每一次提交，因此你可以很方便的回到历史的版本，而不用去创建大量的备份，可以创建分支，团队协作开发等。Git 相对于其他的版本控制系统，更强大的地方在于本地仓库，每台设备都有一模一样的本地版本，不用担心中央服务器突然崩溃的问题。我个人用 Git 主要是用于版本同步，我有时在公司实习写的代码要和寝室的代码同步，简单的几行命令就可实现。
 
-    \section{小结}
-      \label{sec:小结}
+    \section{本章小结}
+      \label{sec:技术与工具小结}
         本章主要介绍了我在项目开发中用到的技术和工具，以上只是列举了我自己用得到的工具，事实上，前端领域中还有大量的工具，包括很多效果库、框架、自动化工具构建、测试工具等。工欲善其事必先利其器，工具用得好可以大大提升开发速度，简化重复的劳动，我们应该积极去学习，尤其是在前端这个发展迅猛的行业。
-
-
-\end{document}
-

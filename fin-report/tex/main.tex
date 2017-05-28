@@ -1,0 +1,57 @@
+%入口页
+
+\documentclass[master]{thesis-uestc}
+%
+  \usepackage{booktabs}% 三线表
+  \usepackage{tabularx}% 让表格自适应宽度与自动换行
+  \newcolumntype{Y}{>{\centering\arraybackslash}X}% 定义自适应列的居中格式 Y, 用 X 为左对齐(自适应列)
+  \usepackage{xcolor}% 颜色宏包
+  \usepackage{listings}% 代码高亮
+  \definecolor{codegreen}{rgb}{0,0.6,0}
+  \definecolor{codegray}{rgb}{0.5,0.5,0.5}
+  \definecolor{codepurple}{rgb}{0.58,0,0.82}
+  \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+  \lstset{
+      commentstyle=\color{codegreen},
+      keywordstyle=\color{magenta},
+      stringstyle=\color{codepurple},
+      basicstyle=\footnotesize,% 代码字体大小
+      breakatwhitespace=false,% 是否只在空白字符处断行
+      breaklines=true,% 自动断行
+      captionpos=b,% 标题位置为 bottom
+      keepspaces=true,
+      numbers=left,% 行号的位置
+      numbersep=5pt,% 行号与代码的距离
+      numberstyle=\tiny\color{codegray},% 行号样式
+      stepnumber=2,% 隔行显示行号
+      showspaces=false,
+      showstringspaces=false,
+      showtabs=false,
+      tabsize=2
+  }
+  \newcommand\keyword[1]{\colorbox[rgb]{0.9,0.9,0.9}{#1}}
+  % \usepackage{underscore}% 处理下划线问题
+
+  \title{基于微擎的微信商城 H5 开发}
+  \author{宋云超}
+
+\begin{document}
+
+  \input{zn-abstract}%    -- 中文摘要
+  \input{en-abstract}%    -- 英文摘要
+  \thesistableofcontents% -- 目录
+
+  \include{intro}%        -- 绪论
+  % \include{require}%    -- 需求分析
+  % \include{tech_tool}%  -- 技术与工具
+  % \include{develop}%    -- 开发流程
+  % \include{achieve}%    -- 成果
+  % \include{summary}%    -- 结论 todo
+
+  \input{thanks}%         -- 致谢
+  \input{bib}%            -- 参考文献
+  \input{appendix}%       -- 附录
+  \input{art-original}%   -- 英文资料原文
+  \input{art-translate}%  -- 英文资料译文
+
+\end{document}

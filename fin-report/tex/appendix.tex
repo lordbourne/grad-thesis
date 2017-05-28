@@ -1,0 +1,656 @@
+% 附录
+
+\thesisappendix
+  \section{路由与部分控制器}
+    \label{sec:控制器与路由部分}
+      \begin{lstlisting}
+        // 路由配置
+        aystore.config(function($stateProvider, $urlRouterProvider) {
+          $urlRouterProvider.when("", "/main");
+          $stateProvider
+            .state('main', {
+              url: '/main',
+              templateUrl: "tpl/main.html",
+              views: {
+                '': {
+                  templateUrl: "tpl/main.html"
+                },
+                'content@main': {
+                   templateUrl: "tpl/home.html"
+                },
+                'botmenu@main': {
+                   templateUrl: "tpl/botmenu.html"
+                },
+              }
+            })
+
+            .state('main.home', {// 商城页视图
+              url: '/home',
+              views: {
+                'content@main': {
+                   templateUrl: "tpl/home.html"
+                }
+              }
+            })
+            .state('main.ayculture', {// 文章页视图
+              url: '/ayculture',
+              views: {
+                'content@main': {
+                   templateUrl: "tpl/ayculture.html"
+                }
+              }
+            })
+            .state('main.mine', {// 我的页视图
+              url: '/mine',
+              views: {
+                'content@main': {
+                   templateUrl: "tpl/mine.html"
+                }
+              }
+            })
+
+            .state('detail', {// 一些无底部菜单的页面
+              url: '/detail',
+              templateUrl: "tpl/detail.html"
+            })
+            .state('detail.strdetail', {// 商城详情页视图
+              url: '/strdetail',
+              templateUrl: "tpl/strdetail.html"
+            })
+            .state('detail.pay', {// 支付页视图
+              url: '/pay',
+              templateUrl: "tpl/pay.html"
+            })
+            .state('detail.success', {// 支付成功视图
+              url: '/success',
+              templateUrl: "tpl/pay-successful.html"
+            })
+            .state('detail.fail', {// 支付失败视图
+              url: '/fail',
+              templateUrl: "tpl/fail.html"
+            })
+
+            .state('main.artdetail', {// 文章详情页视图，含底部菜单
+              url: '/artdetail',
+              views: {
+                'content@main': {
+                   templateUrl: "tpl/artdetail.html"
+                }
+              }
+            })
+
+            .state('record', {// 消费记录页视图
+              url: '/record',
+              templateUrl: "tpl/record.html"
+            })
+            .state('collection', {// 收藏记录页视图
+              url: '/collection',
+              templateUrl: "tpl/collection.html"
+            })
+            .state('setting', {// 设置页视图
+              url: '/setting',
+              templateUrl: "tpl/setting.html"
+            });
+        });
+        // 日期与时间判断服务
+        aystore.factory('DayAndTimeTest', function(){
+          var service = {};
+          Array.prototype.contains = function(obj) {
+            var i = this.length;
+            while (i--) {
+              if (this[i] === obj) {
+                return true;
+              }
+            }
+            return false;
+          };
+
+          function nthMinute(time) {
+            var time = (time+"").replace(/ /gi, "");// 去空格
+            var arr = time.split(":");
+            var h = parseInt(arr[0]);
+            var m = parseInt(arr[1]);
+            return 60*h + m;
+          }
+
+          service.nthMinute = nthMinute;
+
+          service.isDayInRange = function (date, range) {
+            var day = new Date(date).getDay();
+            day = (day === 0) ? 7 : day;
+            range = range.replace(/ /gi, ""); // 去空格，如："ff,  f, d ,f " -> "ff,f,d,f"
+            var arr = [];
+            var arr1 = range.split(",");
+            var beg = 0;
+            var end = 0;
+            var item = "";
+            for (let i=0; i<arr1.length; i++) {
+              item = arr1[i];
+              if (/-/.test(item)) {
+                beg = parseInt(item.split("-")[0]);
+                end = parseInt(item.split("-")[1]);
+                while (beg <= end) {
+                  arr.push(beg);
+                  beg++;
+                }
+              } else {
+                arr.push(parseInt(item));
+              }
+            }
+            // console.log(day);
+            // console.log(arr);
+            // console.log(arr.contains(day));
+            if (arr.contains(day)) {
+              return true;
+            } else {
+              return false;
+            }
+          };
+
+          service.isTimeInRange = function (time, range) {
+            range = range.replace(/ /gi, "");
+            var arr = range.split("-");
+            var beg = nthMinute(arr[0]);
+            var end = nthMinute(arr[1]);
+            var time = nthMinute(time);
+            return time >= beg && time <= end;
+          };
+
+          return service;
+        });
+        // 底部菜单状态控制
+        aystore.controller('BotmenuController', function($scope, $state, $timeout) {
+          // 初始化
+          $scope.path1 = "img/home-selected.jpg";
+          $scope.path2 = "img/ay.jpg";
+          $scope.path3 = "img/mine.jpg";
+          $scope.txtClass1 = 1;
+          $scope.txtClass2 = 0;
+          $scope.txtClass3 = 0;
+
+          // 点击第一个按钮时的动作
+          $scope.select1 = function() {
+            $scope.path1 = "img/home-selected.jpg";
+            $scope.path2 = "img/ay.jpg";
+            $scope.path3 = "img/mine.jpg";
+            $scope.txtClass1 = 1;
+            $scope.txtClass2 = 0;
+            $scope.txtClass3 = 0;
+            // $timeout(function () {
+            //   $state.go("home");
+            // }, 100);
+
+          };
+          // 点击第二个按钮时的动作
+          $scope.select2 = function() {
+            $scope.path1 = "img/home.jpg";
+            $scope.path2 = "img/ay-selected.jpg";
+            $scope.path3 = "img/mine.jpg";
+            $scope.txtClass1 = 0;
+            $scope.txtClass2 = 1;
+            $scope.txtClass3 = 0;
+            // $timeout(function () {
+            //   $state.go("ayculture");
+            // }, 100);
+          };
+          // 点击第三个按钮时的动作
+          $scope.select3 = function() {
+            $scope.path1 = "img/home.jpg";
+            $scope.path2 = "img/ay.jpg";
+            $scope.path3 = "img/mine-selected.jpg";
+            $scope.txtClass1 = 0;
+            $scope.txtClass2 = 0;
+            $scope.txtClass3 = 1;
+            // $timeout(function () {
+            //   $state.go("mine");
+            // }, 100);
+          };
+        });
+
+        // 艾灸店列表控制
+        aystore.controller('HomeController', function($rootScope, $scope, $http) {
+          $http.get('data/strlist.json', {
+              params: {
+                "custId": "12323",
+                "data": "strList"
+              },
+              responseType: "json"
+            })
+            .then(function(res) {
+              console.log(res.data.data);
+              $rootScope.strItems = res.data.data;
+            }, function() {
+              alert('error');
+            });
+        });
+        // 店铺详情
+        aystore.controller('StrdetailController', function($rootScope, $scope, $http, $timeout, $state, DayAndTimeTest) {
+          // 订单数据管理
+          var order = {
+            'ordId': 'adafdfefdvefsdvsd1213',
+            'creTime': new Date().getTime(),
+            'custId': 'sjdkfjsdfweioje12',
+            'phone': 1234567,
+            'srvTime': '',
+            'aySrv': {
+              'inputName': "ay",
+              'name': '艾灸床保健',
+              'price': 0,
+              'num': 0
+            },
+            'othSrv': []
+          };
+
+          $http
+            .get('data/strdetail.json', {
+              params: {
+                "custId": "12323",
+                "data": "strdetail"
+              },
+              responseType: "json"
+            })
+            .then(function(res) {
+              $rootScope.strdetail = res.data.data;
+              $scope.strdetail = res.data.data;
+              console.log($rootScope.strdetail);
+              $rootScope.pageTitle = $rootScope.strdetail.strName;
+            }, function() {
+              alert('error');
+            });
+          // 日期选择插件
+          $scope.setDate = function () {
+            jeDate({
+              dateCell: "#dateinput",
+              format: "YYYY-MM-DD hh:mm:ss",
+              isinitVal: true,
+              isTime: true
+            });
+          };
+          // 复选框插件
+          $timeout(function () {
+            $('input').iCheck({
+               checkboxClass: 'icheckbox_polaris'
+               // radioClass: 'iradio_polaris',
+               // increaseArea: '-10' // optional
+            });
+          });
+
+          function chooseService () {
+            // 预定的保健时间
+            order.srvTime = $('.sec-date input').val();
+            // 根据预定时间判断艾灸服务的价格
+            var date = order.srvTime.split(" ")[0];
+            var day = new Date(date).getDay();// 星期几
+            var time = order.srvTime.split(" ")[1];
+            console.log("选择的日期：" + date + " 星期几：" + day);
+            console.log("选择的时间：" + time);
+            var aySrvPrice = $rootScope.strdetail.aySrvPrice;
+            // console.log(aySrvPrice);
+            var item = null;
+            for (var i=0; i<aySrvPrice.length; i++) {
+              item = aySrvPrice[i];
+              console.log("");
+              console.log(item.weekday + " " + item.srvTime);
+              if (DayAndTimeTest.isDayInRange(day, item.weekday)) {
+                console.log("日期在范围内");
+                if (DayAndTimeTest.isTimeInRange(time, item.srvTime)) {
+                  console.log("时间也在范围内");
+                  order.aySrv.price = item.price;
+                } else {
+                  console.log("但时间不在范围内");
+                }
+              } else {
+                console.log("日期不在范围内");
+              }
+            }
+            if (order.aySrv.price === 0) {
+              alert('日期不在规定范围内，请重新选择！');
+              return;
+            }
+            // 主服务
+            order.aySrv.num = $('.sec-aySrvPrice input').is(':checked') ? 1 : 0;
+
+            // 其他服务的 post 数据构造
+            var othSrvPrice = $rootScope.strdetail.othSrvPrice;
+            $('.sec-othSrvPrice input').each(function(index, el) {
+              if ($(this).is(':checked')) {
+                order.othSrv.push({
+                  'inputName': othSrvPrice[index].inputName,
+                  'name': othSrvPrice[index].srvName,
+                  'price': othSrvPrice[index].price,
+                  'num': 1
+                });
+              }
+            });
+
+            // 必须选择一个服务
+            console.log(order.aySrv.num === 0);
+            console.log(order.othSrv.length === 0);
+            if (order.aySrv.num === 0 && order.othSrv.length === 0) {
+              alert("请至少选择一项服务");
+              return;
+            }
+
+            console.log("订单数据：");
+            console.log(order);
+            $rootScope.order = order;
+            $state.go('detail.pay');
+          }
+
+          $scope.chooseService = chooseService;
+
+        });
+
+        // 支付
+        aystore.controller('PayController', function($rootScope, $scope, $timeout) {
+          // 根据 order 的变动实时改变总价
+          function updateTotal() {
+            var order = $rootScope.order;
+            var total = 0;
+            total += order.aySrv.num * order.aySrv.price;
+            var item = order.othSrv;
+            for (var i = 0; i < item.length; i++) {
+              total += item[i].price * item[i].num;
+            }
+            $timeout(function () {
+              $scope.total = total;
+            });
+            console.log(total);
+          }
+          function updateTotalUsingJQ() {
+            var order = $rootScope.order;
+            var total = 0;
+            total += order.aySrv.num * order.aySrv.price;
+            var item = order.othSrv;
+            for (var i = 0; i < item.length; i++) {
+              total += item[i].price * item[i].num;
+            }
+            $('#total').html(total);
+          }
+          updateTotal();
+
+          // 绑定事件，实时显示总价
+          console.log( $('#aysrv') );
+          $('#aysrv').change(function() {
+            var val = parseInt($(this).val());
+            $rootScope.order.aySrv.num = val;
+            updateTotal();
+          });
+
+          $timeout(function () {
+            console.log($('.part1').find('.othsrv'));
+            $('.part1 select.othsrv').each(function (index, el) {
+              $(this).change(function () {
+                var val = parseInt($(this).val());
+                console.log(val);
+                $rootScope.order.othSrv[index].num = val;
+                updateTotal();
+              });
+            });
+          }, 1500);
+        });
+      \end{lstlisting}
+
+  \section{部分模板文件}
+    \label{sec:部分模板文件}
+      \begin{lstlisting}
+        // home.html
+        <div ng-include="'tpl/topbar-search.html'"></div>
+
+        <div ng-controller="HomeController">
+          <ul class="strlist" id="strlist">
+            <li class="store-item" ng-repeat="strItem in strItems">
+              <div class="item-box">
+                <div class="icon">
+                  <img src="img/location-yellow.png" alt=""><!-- todo: 图标名字更换 -->
+                </div>
+                <div class="box-content clearfloat">
+                  <img class="picture" ng-src="{{strItem.strThumbnail}}" alt="store picture">
+                  <div class="name" ng-bind="strItem.strName"></div>
+                  <div class="order clearfloat">
+                    <a class="btn btn-small" ui-sref="detail.strdetail" ng-class="{0:'btn-blue', 1:'ordered'}[strItem.ordStatus]" ng-bind="{0:'预定', 1:'已预订'}[strItem.ordStatus]">
+                    </a>
+                    <span class="avg-price">
+                      <span class="txt-number" ng-bind="strItem.avgPrice"></span> 人/次
+                    </span>
+                  </div>
+                  <ul class="service">
+                    <li ng-repeat="srvItem in strItem.strServices">
+                      <span ng-bind="srvItem.srvName"></span>
+                      <span ng-bind="srvItem.srvPrice" class="txt-number"></span>
+                      <span ng-bind="srvItem.srvUnit"></span>
+                    </li>
+                  </ul>
+                  <div class="address" ng-bind="strItem.strCity + strItem.strDistrict + strItem.strAddress"></div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      \end{lstlisting}
+      \begin{lstlisting}
+        // strdetail.html
+        <div ng-controller="StrdetailController">
+          <div id="topbar-title">
+            <a class="left-icon-back goback" onclick="goback()">
+              <img src="img/back.png" alt="back.jpg">
+            </a>
+            <span class="name">{{pageTitle}}</span>
+          </div>
+
+          <div id="strdetail">
+            <!-- banner 部分：店的大图 -->
+            <section class="sec-banner">
+              <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide" ng-repeat="pic in strdetail.strPicture">
+                    <img ng-src="{{pic}}" alt="">
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- intro 部分：店的简介部分 -->
+            <section class="sec-intro store-info">
+              <img class="icon" src="img/location-yellow.png" alt="">
+              <p class="intro servie">{{strdetail.srvIntro}}</p>
+              <p class="address">{{strdetail.strCity + strdetail.strDistrict + strdetail.strAddress}}</p>
+            </section>
+            <!-- 服务价格与选择 -->
+            <section class="sec-order order-info3">
+              <!-- 满员图标，根据返回的字段 full 设置其隐藏与否, 而求如果满的话，后面表单都无效，设为禁用状态 -->
+              <div class="icon-full"></div>
+              <!-- 日期时间选择 -->
+              <section class="sec-date timepart clearfloat">
+                <div class="icon">
+                  <img class="" src="img/calendar.png" alt="" ng-click="setDate()">
+                </div>
+                <div class="title">预定时间：</div>
+                <p class="datep time">
+                  <input class="datainp" id="dateinput" type="text" placeholder="请点击右侧图标输入日期" readonly>
+                </p>
+                <!-- <img class="icon" src="img/calendar.png" alt=""> -->
+              </section>
+
+              <!-- 主服务 -->
+              <section class="sec-aySrvPrice ayservicepart">
+                <div class="title">
+                  艾灸服务费
+                  <input class="chk-aysrv checkbox" type="checkbox" name="aysrv" checked>
+                </div>
+                <ul class="">
+                  <li class="clearfix" ng-repeat="aySrvItem in strdetail.aySrvPrice">
+                    <div class="time">{{aySrvItem.weekdayDesc + "  " + aySrvItem.srvTime}}</div>
+                    <div class="price">{{aySrvItem.price + "  " + aySrvItem.unit}}</div>
+                  </li>
+                </ul>
+                <!-- <div class="icon checkbox1"></div> -->
+
+                <!-- <input id="myothercheckbox" type="checkbox" class="icon checkbix" data-text="Checkbix. Large, checked" data-size="large"> -->
+              </section>
+
+              <!-- 其他服务 -->
+              <setion class="sec-othSrvPrice othservicepart">
+                <div class="title">
+                  其他保健服务费
+
+                </div>
+                <ul>
+                  <li class="clearfix" ng-repeat="othSrvItem in strdetail.othSrvPrice">
+                    <div class="service">{{othSrvItem.srvName}}</div>
+                    <div class="price">{{othSrvItem.price + " " + othSrvItem.unit}}</div>
+                    <input class="chk-othsrv checkbox" type="checkbox" name="{{othSrvItem.inputName}}">
+                  </li>
+                </ul>
+              </setion>
+            </section>
+            <a class="full btn btn-long btn-blue" data-full ng-click="chooseService()">
+              预定
+            </a>
+          </div>
+        </div>
+      \end{lstlisting}
+
+  \section{部分 Less 文件}
+    \label{sec:部分_less_文件}
+      \begin{lstlisting}
+        // topbar-search.less
+        #topbar-search {
+          position: fixed;
+          top: 0px;
+          z-index: 1;
+          width: 100%;
+          height: 40px;
+          font-family: "方正兰亭纤黑_GBK", "Microsoft YaHei", "serif";
+          background-color: #19c5d3;
+          .location-icon {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            height: 24px;
+            margin-top: -12px;
+            /*border: 1px solid #000;*/
+            img {
+              height: 100%;
+            }
+          }
+          .location-text {
+            margin-left: 37px;
+            font-size: 14px;
+            line-height: 40px;
+            color: #fff;
+          }
+          .searchbox {
+            position: absolute;
+            left: 24.4%;
+            top: 50%;
+            width: 70%;
+            height: 30px;
+            margin-top: -15px;
+            border-radius: 5px;
+            background-image: url(../img/search.png);
+            background-repeat: no-repeat;
+            background-position: 10px center;
+            background-size: 15px;
+            background-color: #45d6e1;
+            text-indent: 35px;
+            font-size: 14px;
+            border: none;
+            &:focus {
+              outline: none;
+            }
+            &::-webkit-input-placeholder {
+              color: #fff;
+            }
+          }
+        }
+      \end{lstlisting}
+      \begin{lstlisting}
+        // strlist.less
+        #strlist {
+          margin-top: 30px;
+          margin-bottom: 50px;
+          width: 100%;
+          background: #fff;
+          .first {
+            border-top: none !important;
+            ;
+          }
+          .store-item {
+            padding-left: 10px;
+            .item-box {
+              position: relative;
+              padding-top: 15px;
+              padding-bottom: 15px;
+              padding-right: 25px;
+              border-top: 1px solid #d1d1d0;
+              .icon {
+                position: absolute;
+                top: 12px;
+                right: 7px;
+                height: 26px;
+                img {
+                  height: 100%;
+                }
+              }
+              .box-content {
+                .picture {
+                  float: left;
+                  height: 70px;
+                  margin-bottom: 10px;
+                  img {
+                    height: 100%;
+                  }
+                }
+                .name {
+                  padding-top: 5px;
+                  padding-left: 118px;
+                  font-size: 17px;
+                  color: #2e2e2e;
+                }
+                .order {
+                  margin-top: 14px;
+                  padding-left: 118px;
+                  .btn {
+                    width: 140px;
+                  }
+                  .avg-price {
+                    display: inline-block;
+                    float: right;
+                    margin-top: 7px;
+                    font-size: 15px;
+                    color: #2e2e2e;
+                  }
+                }
+                .service {
+                  margin-top: 5px;
+                  font-size: 13px;
+                  color: #6d6d6d;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                  li {
+                    float: left;
+                    margin-right: 6px;
+                  }
+                }
+                .address {
+                  margin-top: 5px;
+                  font-size: 13px;
+                  color: #6d6d6d;
+                }
+              }
+            }
+          }
+          .ordered {
+            background-color: rgb(255, 186, 0);
+            color: #fff;
+          }
+        }
+      \end{lstlisting}
+
+
+
+
+
+

@@ -6,6 +6,21 @@ API 解读，功能，方法
 
 完整开发流程、方法、技巧
 
+# 常见错误总结
+Wechat is not a constructor
+。。。 is not a function
+
+可能是模块引用不成功，具体原因如下：
+
+- 可能模块中的函数或对象未暴露出来，最后漏写 exports 或 module.exports 语句
+- 名字写错，如：
+var Pomist = require('promise')
+var Pormist = require('promise')
+引用正确的 Promist 关键字会以绿色斜体显示
+
+
+
+
 # 微信公众平台简介
 大家平时用微信做什么？
 我自己关注的一些公众号
